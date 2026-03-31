@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Kenzie's Be Cafe — Barista Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown-deep:#2c1a0e;--brown-mid:#5c3d1e;--brown-light:#a06b3c;
+    --brown-pale:#d4a97a;--cream:#faf7f2;--cream-dark:#f0ebe1;
+    --gold:#c9913a;--gold-light:#e8c07a;--border:rgba(92,61,30,0.12);
+    --text-dark:#1e1209;--text-mid:#5c3d1e;--text-light:#9a7a5a;
+    --green:#2d8a4e;--green-light:#e6f4ec;--green-border:#a8d5b8;
+    --red:#c0392b;--red-light:#fdecea;--red-border:#f1a9a0;
+    --blue:#1a6fb5;--blue-light:#e8f2fb;
+    --warm-white:#fffdf9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--cream-dark);color:var(--text-dark);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+  /* ── LOGIN ── */
+  .login-screen{position:fixed;inset:0;background:var(--brown-deep);display:flex;align-items:center;justify-content:center;z-index:999;padding:24px;}
+  .login-box{background:rgba(255,255,255,0.06);border:1px solid rgba(201,145,58,0.3);border-radius:20px;padding:40px 36px;width:100%;max-width:380px;text-align:center;}
+  .login-icon{font-size:40px;margin-bottom:16px;}
+  .login-title{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-pale);margin-bottom:8px;}
+  .login-sub{font-size:20px;font-weight:600;color:var(--cream);margin-bottom:28px;}
+  .login-input{width:100%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px 18px;font-size:18px;color:var(--cream);text-align:center;letter-spacing:4px;outline:none;font-family:'DM Mono',monospace;}
+  .login-input:focus{border-color:var(--gold);}
+  .login-btn{width:100%;background:var(--gold);color:var(--brown-deep);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;padding:14px;border-radius:12px;cursor:pointer;border:none;margin-top:14px;transition:all 0.2s;}
+  .login-btn:hover{background:var(--gold-light);}
+  .login-error{font-size:13px;color:#ff8a8a;margin-top:10px;min-height:18px;}
+
+  /* ── TOP BAR ── */
+  .top-bar{background:var(--brown-deep);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,0.2);}
+  .top-bar-title{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--brown-pale);}
+  .top-bar-right{display:flex;align-items:center;gap:12px;}
+  .refresh-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:8px;color:var(--cream);font-size:12px;padding:6px 14px;cursor:pointer;font-family:'DM Mono',monospace;transition:all 0.15s;}
+  .refresh-btn:hover{background:rgba(255,255,255,0.15);}
+  .last-refresh{font-size:11px;color:rgba(255,255,255,0.3);font-family:'DM Mono',monospace;}
+
+  /* ── STATS BAR ── */
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border);}
+  .stat-cell{background:white;padding:14px 16px;text-align:center;}
+  .stat-cell-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:4px;}
+  .stat-cell-val{font-size:22px;font-weight:600;color:var(--brown-deep);font-family:'DM Mono',monospace;}
+  .stat-cell-val.green{color:var(--green);}
+  .stat-cell-val.gold{color:var(--gold);}
+
+  /* ── TABS ── */
+  .tabs{display:flex;background:white;border-bottom:1px solid var(--border);}
+  .tab-btn{flex:1;padding:14px 8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--text-light);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;}
+  .tab-btn.active{color:var(--brown-deep);border-bottom-color:var(--gold);font-weight:600;}
+  .tab-btn .tab-count{display:inline-block;background:var(--gold);color:var(--brown-deep);font-size:10px;font-weight:700;padding:1px 6px;border-radius:100px;margin-left:5px;}
+  .tab-btn .tab-count.green{background:var(--green);color:white;}
+
+  /* ── CONTENT ── */
+  .tab-content{display:none;padding:16px;}
+  .tab-content.active{display:block;}
+
+  /* ── ORDER CARDS ── */
+  .order-card{background:white;border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;transition:all 0.2s;position:relative;}
+  .order-card.picked-up{background:var(--green-light);border-color:var(--green-border);opacity:0.7;}
+  .order-card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;}
+  .order-name{font-size:16px;font-weight:600;color:var(--brown-deep);}
+  .order-dept{font-size:12px;color:var(--text-light);margin-top:2px;}
+  .order-time{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);}
+  .order-drinks{font-size:13px;color:var(--text-mid);margin-bottom:10px;line-height:1.6;background:var(--cream-dark);border-radius:8px;padding:10px 12px;}
+  .order-notes{font-size:12px;color:var(--text-light);font-style:italic;margin-bottom:10px;}
+  .order-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .order-total{font-family:'DM Mono',monospace;font-size:18px;font-weight:500;color:var(--brown-deep);}
+  .pickup-btn{background:var(--green);color:white;border:none;border-radius:10px;padding:10px 20px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.15s;flex-shrink:0;}
+  .pickup-btn:hover{background:#247a42;}
+  .pickup-btn:disabled{opacity:0.5;cursor:not-allowed;}
+  .picked-up-badge{background:var(--green);color:white;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:600;font-family:'DM Mono',monospace;}
+  .order-num{position:absolute;top:12px;right:12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-light);}
+
+  /* ── WALK-UP FORM ── */
+  .walkup-wrap{max-width:600px;margin:0 auto;}
+  .wu-section{background:white;border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:12px;}
+  .wu-section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brown-light);margin-bottom:14px;}
+  .drink-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .drink-tap{background:var(--cream-dark);border:1px solid var(--border);border-radius:10px;padding:12px 10px;cursor:pointer;transition:all 0.15s;position:relative;}
+  .drink-tap:active{transform:scale(0.97);}
+  .drink-tap.selected{background:#fdf3e3;border-color:var(--gold);}
+  .drink-tap-name{font-size:13px;color:var(--text-dark);font-weight:500;margin-bottom:2px;}
+  .drink-tap-price{font-family:'DM Mono',monospace;font-size:11px;color:var(--text-light);}
+  .drink-tap-qty{position:absolute;top:8px;right:8px;background:var(--gold);color:var(--brown-deep);border-radius:100px;width:22px;height:22px;display:none;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:'DM Mono',monospace;}
+  .drink-tap.selected .drink-tap-qty{display:flex;}
+  .drink-qty-controls{display:flex;align-items:center;gap:8px;margin-top:8px;}
+  .dqc-btn{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:white;color:var(--brown-mid);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+  .dqc-val{font-family:'DM Mono',monospace;font-size:15px;min-width:24px;text-align:center;}
+  .milk-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .milk-tap{padding:8px 16px;border-radius:100px;border:1px solid var(--border);background:var(--cream-dark);font-size:13px;color:var(--text-mid);cursor:pointer;transition:all 0.15s;}
+  .milk-tap.selected{background:var(--brown-deep);color:var(--cream);border-color:var(--brown-deep);}
+  .donate-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .donate-tap{padding:10px 18px;border-radius:10px;border:1px solid var(--border);background:var(--cream-dark);font-size:15px;font-weight:600;color:var(--brown-mid);cursor:pointer;transition:all 0.15s;}
+  .donate-tap.selected{background:var(--brown-deep);color:var(--gold-light);border-color:var(--brown-deep);}
+  .wu-field{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+  .wu-field label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-light);}
+  .wu-field input{border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text-dark);background:var(--cream);outline:none;transition:border-color 0.15s;}
+  .wu-field input:focus{border-color:var(--gold);}
+  .wu-summary{background:var(--cream-dark);border-radius:10px;padding:14px 16px;margin-bottom:12px;border:1px solid var(--border);}
+  .wu-summary-items{font-size:13px;color:var(--text-mid);line-height:1.8;}
+  .wu-summary-total{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+  .wu-total-label{font-size:13px;color:var(--text-light);}
+  .wu-total-amt{font-family:'DM Mono',monospace;font-size:22px;font-weight:500;color:var(--brown-deep);}
+  .wu-pay-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+  .wu-pay-btn{padding:14px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;text-align:center;}
+  .wu-pay-btn.venmo{background:#008cff;color:white;}
+  .wu-pay-btn.cash{background:var(--green);color:white;}
+  .wu-pay-btn.selected{outline:3px solid var(--brown-deep);}
+  .wu-charge-btn{width:100%;background:var(--brown-deep);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;padding:16px;border-radius:12px;cursor:pointer;border:none;transition:all 0.2s;}
+  .wu-charge-btn:hover{background:var(--brown-mid);}
+  .wu-charge-btn:disabled{opacity:0.5;cursor:not-allowed;}
+  .wu-success{background:var(--green-light);border:1px solid var(--green-border);border-radius:12px;padding:20px;text-align:center;display:none;}
+  .wu-success-icon{font-size:36px;display:block;margin-bottom:8px;}
+  .wu-success-text{font-size:16px;font-weight:600;color:var(--green);margin-bottom:4px;}
+  .wu-success-sub{font-size:13px;color:var(--text-light);}
+  .wu-next-btn{margin-top:12px;background:var(--brown-deep);color:var(--cream);border:none;border-radius:10px;padding:12px 28px;font-size:14px;font-weight:600;cursor:pointer;}
+
+  /* ── EMPTY STATE ── */
+  .empty-state{text-align:center;padding:60px 20px;color:var(--text-light);}
+  .empty-icon{font-size:40px;display:block;margin-bottom:12px;}
+
+  /* ── LOADING ── */
+  .loading{text-align:center;padding:40px;color:var(--text-light);font-family:'DM Mono',monospace;font-size:12px;}
+
+  @media(min-width:768px){
+    .stats-bar{grid-template-columns:repeat(4,1fr);}
+    .drink-grid{grid-template-columns:repeat(3,1fr);}
+    .order-card{padding:20px;}
+    .tab-content{padding:20px;}
+    .walkup-wrap{max-width:700px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ── -->
+<div class="login-screen" id="login-screen">
+  <div class="login-box">
+    <div class="login-icon">☕</div>
+    <div class="login-title">Kenzie's Be Cafe</div>
+    <div class="login-sub">Barista Dashboard</div>
+    <input class="login-input" type="password" id="login-input" placeholder="••••••" maxlength="20" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">Enter</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ── MAIN APP ── -->
+<div id="app" style="display:none;">
+
+  <div class="top-bar">
+    <div class="top-bar-title">☕ Barista Dashboard — April 16th</div>
+    <div class="top-bar-right">
+      <span class="last-refresh" id="last-refresh">–</span>
+      <button class="refresh-btn" onclick="loadAll()">↻ Refresh</button>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-cell">
+      <div class="stat-cell-label">Pre-Orders</div>
+      <div class="stat-cell-val" id="stat-total-orders">–</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-cell-label">Pending</div>
+      <div class="stat-cell-val gold" id="stat-pending">–</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-cell-label">Picked Up</div>
+      <div class="stat-cell-val green" id="stat-pickedup">–</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-cell-label">Total Raised</div>
+      <div class="stat-cell-val" id="stat-raised">–</div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('preorders',this)">
+      Pre-Orders <span class="tab-count" id="pending-count">0</span>
+    </button>
+    <button class="tab-btn" onclick="switchTab('walkup',this)">
+      + Walk-Up
+    </button>
+    <button class="tab-btn" onclick="switchTab('done',this)">
+      Done <span class="tab-count green" id="done-count">0</span>
+    </button>
+  </div>
+
+  <!-- PRE-ORDERS TAB -->
+  <div class="tab-content active" id="tab-preorders">
+    <div id="preorders-list"><div class="loading">Loading orders...</div></div>
+  </div>
+
+  <!-- WALK-UP TAB -->
+  <div class="tab-content" id="tab-walkup">
+    <div class="walkup-wrap">
+
+      <div class="wu-section">
+        <div class="wu-section-title">Hot Drinks ☕</div>
+        <div class="drink-grid" id="wu-hot-grid"></div>
+      </div>
+
+      <div class="wu-section">
+        <div class="wu-section-title">Iced Drinks 🧊</div>
+        <div class="drink-grid" id="wu-iced-grid"></div>
+      </div>
+
+      <div class="wu-section">
+        <div class="wu-section-title">Milk 🥛 &nbsp;<span style="font-size:10px;color:var(--text-light);font-weight:400;">+$1.25 per drink</span></div>
+        <div class="milk-row">
+          <button class="milk-tap selected" onclick="selectWuMilk(this,'Regular')">Regular</button>
+          <button class="milk-tap" onclick="selectWuMilk(this,'Almond')">Almond +$1.25</button>
+          <button class="milk-tap" onclick="selectWuMilk(this,'Oat')">Oat +$1.25</button>
+          <button class="milk-tap" onclick="selectWuMilk(this,'Coconut')">Coconut +$1.25</button>
+        </div>
+      </div>
+
+      <div class="wu-section">
+        <div class="wu-section-title">Donation 🤍</div>
+        <div class="donate-row">
+          <button class="donate-tap" onclick="selectWuDonate(this,0)">None</button>
+          <button class="donate-tap" onclick="selectWuDonate(this,5)">$5</button>
+          <button class="donate-tap" onclick="selectWuDonate(this,10)">$10</button>
+          <button class="donate-tap" onclick="selectWuDonate(this,25)">$25</button>
+        </div>
+      </div>
+
+      <div class="wu-section">
+        <div class="wu-section-title">Customer (optional)</div>
+        <div class="wu-field">
+          <label>Name</label>
+          <input type="text" id="wu-name" placeholder="Walk-up customer">
+        </div>
+      </div>
+
+      <div class="wu-summary" id="wu-summary">
+        <div class="wu-summary-items" id="wu-summary-items"><span style="color:rgba(92,61,30,0.3);font-style:italic;">Nothing selected yet</span></div>
+        <div class="wu-summary-total">
+          <span class="wu-total-label">Total</span>
+          <span class="wu-total-amt" id="wu-total">$0.00</span>
+        </div>
+      </div>
+
+      <div class="wu-section">
+        <div class="wu-section-title">Payment Method</div>
+        <div class="wu-pay-btns">
+          <button class="wu-pay-btn venmo selected" id="pay-venmo" onclick="selectPayment('Venmo')">💙 Venmo</button>
+          <button class="wu-pay-btn cash" id="pay-cash" onclick="selectPayment('Cash')">💵 Cash</button>
+        </div>
+      </div>
+
+      <button class="wu-charge-btn" id="wu-charge-btn" onclick="submitWalkup()">
+        ✅ &nbsp;Charge & Log Order
+      </button>
+
+      <div class="wu-success" id="wu-success">
+        <span class="wu-success-icon">✅</span>
+        <div class="wu-success-text">Order logged!</div>
+        <div class="wu-success-sub" id="wu-success-sub">Walk-up recorded in the sheet.</div>
+        <button class="wu-next-btn" onclick="resetWalkup()">Next Customer →</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DONE TAB -->
+  <div class="tab-content" id="tab-done">
+    <div id="done-list"><div class="loading">Loading...</div></div>
+  </div>
+
+</div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwg1TpmFmXnjGcA9w9Nobpna5nO78poj38QzbTXRqM0rmeFRRkCL6ZItbA6CQqvDvGx/exec";
+const PASSWORD = "kenzies2026";
+
+const HOT = [
+  {name:"Hot Chocolate",price:4.50},{name:"Americano",price:2.75},
+  {name:"Chai",price:5.00},{name:"Dirty Chai",price:5.50},
+  {name:"Latte",price:4.50},{name:"Mocha Latte",price:5.25},
+  {name:"Caramel Latte",price:5.25},{name:"Vanilla Latte",price:5.25},
+  {name:"SF Vanilla Latte",price:5.25},{name:"Butter Pecan",price:5.25},
+  {name:"Bourbon Caramel",price:5.50},
+];
+const ICED = [
+  {name:"Iced Americano",price:2.75},{name:"Iced Chai",price:5.00},
+  {name:"Iced Dirty Chai",price:5.50},{name:"Iced Latte",price:4.50},
+  {name:"Iced Mocha",price:5.25},{name:"Iced Caramel",price:5.25},
+  {name:"Iced Vanilla",price:5.25},{name:"Iced SF Vanilla",price:5.25},
+  {name:"Iced Butter Pecan",price:5.25},{name:"Iced Bourbon Car.",price:5.50},
+];
+
+// ── LOGIN ──────────────────────────────────────────────────────────────────
+function doLogin(){
+  const val = document.getElementById('login-input').value;
+  if(val === PASSWORD){
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    loadAll();
+    setInterval(loadAll, 30000);
+  } else {
+    document.getElementById('login-error').textContent = 'Incorrect password. Try again.';
+    document.getElementById('login-input').value = '';
+  }
+}
+
+// ── DATA ───────────────────────────────────────────────────────────────────
+let allOrders = [];
+
+async function loadAll(){
+  try {
+    const r = await fetch(SCRIPT_URL + '?action=getorders');
+    const data = await r.json();
+    allOrders = data.orders || [];
+    renderOrders();
+    updateStats();
+    document.getElementById('last-refresh').textContent = new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+  } catch(e) { console.log('Load error', e); }
+  loadThermo();
+}
+
+async function loadThermo(){
+  try {
+    const r = await fetch(SCRIPT_URL + '?action=totals');
+    const d = await r.json();
+    document.getElementById('stat-raised').textContent = '$' + (parseFloat(d.total)||0).toFixed(0);
+  } catch(e){}
+}
+
+function renderOrders(){
+  const pending = allOrders.filter(o => o.paid !== 'Yes');
+  const done    = allOrders.filter(o => o.paid === 'Yes');
+
+  document.getElementById('pending-count').textContent = pending.length;
+  document.getElementById('done-count').textContent    = done.length;
+
+  document.getElementById('preorders-list').innerHTML =
+    pending.length ? pending.map(orderCard).join('') :
+    '<div class="empty-state"><span class="empty-icon">✅</span>All orders picked up!</div>';
+
+  document.getElementById('done-list').innerHTML =
+    done.length ? done.map(o => orderCard(o, true)).join('') :
+    '<div class="empty-state"><span class="empty-icon">☕</span>No pickups yet</div>';
+}
+
+function updateStats(){
+  const pending = allOrders.filter(o => o.paid !== 'Yes').length;
+  const done    = allOrders.filter(o => o.paid === 'Yes').length;
+  document.getElementById('stat-total-orders').textContent = allOrders.length;
+  document.getElementById('stat-pending').textContent      = pending;
+  document.getElementById('stat-pickedup').textContent     = done;
+}
+
+function orderCard(order, isDone=false){
+  const time = order.timestamp ? new Date(order.timestamp).toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'}) : '';
+  return `<div class="order-card ${isDone?'picked-up':''}" id="order-${order.row}">
+    <div class="order-num">#${order.row}</div>
+    <div class="order-card-header">
+      <div>
+        <div class="order-name">${order.name||'Walk-up'}</div>
+        <div class="order-dept">${order.dept||''}</div>
+      </div>
+      <div class="order-time">${time}</div>
+    </div>
+    <div class="order-drinks">${(order.drinks||'').replace(/,\s*/g,'<br>')}</div>
+    ${order.notes?`<div class="order-notes">📝 ${order.notes}</div>`:''}
+    <div class="order-footer">
+      <div class="order-total">$${parseFloat(order.total||0).toFixed(2)}</div>
+      ${isDone
+        ? '<div class="picked-up-badge">✅ Picked Up</div>'
+        : `<button class="pickup-btn" onclick="markPickedUp(${order.row},this)">✅ Picked Up</button>`
+      }
+    </div>
+  </div>`;
+}
+
+async function markPickedUp(row, btn){
+  btn.disabled = true;
+  btn.textContent = '...';
+  try {
+    const url = `${SCRIPT_URL}?action=pickup&row=${row}`;
+    await fetch(url, {method:'GET', mode:'no-cors'});
+    // Optimistically update UI
+    const order = allOrders.find(o => o.row === row);
+    if(order) order.paid = 'Yes';
+    renderOrders();
+    updateStats();
+    setTimeout(loadAll, 1500);
+  } catch(e){
+    btn.disabled = false;
+    btn.textContent = '✅ Picked Up';
+  }
+}
+
+// ── WALK-UP ────────────────────────────────────────────────────────────────
+let wuCart = {}, wuMilk = 'Regular', wuDonate = 0, wuPayment = 'Venmo';
+
+function buildWuMenus(){
+  buildWuGrid(HOT, 'wu-hot-grid');
+  buildWuGrid(ICED, 'wu-iced-grid');
+}
+
+function buildWuGrid(items, id){
+  const el = document.getElementById(id);
+  items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'drink-tap';
+    div.id = 'wu-'+item.name.replace(/\s+/g,'-');
+    div.onclick = () => toggleWuDrink(item.name, item.price, div);
+    div.innerHTML = `
+      <div class="drink-tap-name">${item.name}</div>
+      <div class="drink-tap-price">$${item.price.toFixed(2)}</div>
+      <div class="drink-tap-qty" id="wuqty-${item.name.replace(/\s+/g,'-')}">1</div>`;
+    el.appendChild(div);
+  });
+}
+
+function toggleWuDrink(name, price, el){
+  if(wuCart[name]){
+    wuCart[name].qty++;
+  } else {
+    wuCart[name] = {qty:1, price};
+    el.classList.add('selected');
+  }
+  document.getElementById('wuqty-'+name.replace(/\s+/g,'-')).textContent = wuCart[name].qty;
+  updateWuSummary();
+}
+
+function selectWuMilk(btn, milk){
+  document.querySelectorAll('.milk-tap').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected'); wuMilk = milk; updateWuSummary();
+}
+
+function selectWuDonate(btn, amt){
+  document.querySelectorAll('.donate-tap').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected'); wuDonate = amt; updateWuSummary();
+}
+
+function selectPayment(method){
+  wuPayment = method;
+  document.getElementById('pay-venmo').style.outline = method==='Venmo'?'3px solid var(--brown-deep)':'none';
+  document.getElementById('pay-cash').style.outline  = method==='Cash' ?'3px solid var(--brown-deep)':'none';
+}
+
+function wuCalcTotal(){
+  let t = Object.values(wuCart).reduce((s,{qty,price})=>s+qty*price,0);
+  const drinkCount = Object.values(wuCart).reduce((s,{qty})=>s+qty,0);
+  if(wuMilk!=='Regular' && drinkCount>0) t += drinkCount * 1.25;
+  if(wuDonate>0) t += wuDonate;
+  return t;
+}
+
+function updateWuSummary(){
+  const el = document.getElementById('wu-summary-items');
+  let lines = [];
+  Object.entries(wuCart).forEach(([name,{qty,price}])=>{
+    lines.push(`${qty}× ${name} — $${(qty*price).toFixed(2)}`);
+  });
+  const drinkCount = Object.values(wuCart).reduce((s,{qty})=>s+qty,0);
+  if(wuMilk!=='Regular'&&drinkCount>0) lines.push(`${wuMilk} milk — $${(drinkCount*1.25).toFixed(2)}`);
+  if(wuDonate>0) lines.push(`Donation — $${wuDonate.toFixed(2)}`);
+  el.innerHTML = lines.length ? lines.map(l=>`<div>${l}</div>`).join('') :
+    '<span style="color:rgba(92,61,30,0.3);font-style:italic;">Nothing selected yet</span>';
+  document.getElementById('wu-total').textContent = '$'+wuCalcTotal().toFixed(2);
+}
+
+async function submitWalkup(){
+  if(Object.keys(wuCart).length===0&&wuDonate===0){alert('Select at least one drink or donation.');return;}
+  const btn = document.getElementById('wu-charge-btn');
+  btn.disabled=true; btn.textContent='Logging...';
+  const name = document.getElementById('wu-name').value.trim() || 'Walk-up';
+  const drinks = Object.entries(wuCart).map(([n,{qty,price}])=>`${qty}x ${n} ($${(qty*price).toFixed(2)})`).join(', ');
+  const drinkCount = Object.values(wuCart).reduce((s,{qty})=>s+qty,0);
+  const milkNote = wuMilk!=='Regular' ? `${wuMilk} (+$${(drinkCount*1.25).toFixed(2)})` : 'Regular';
+  const total = wuCalcTotal();
+  try {
+    const url = `${SCRIPT_URL}?action=walkup&name=${encodeURIComponent(name)}&drink=${encodeURIComponent(drinks)}&milk=${encodeURIComponent(milkNote)}&donation=${wuDonate.toFixed(2)}&total=${total.toFixed(2)}&payment=${encodeURIComponent(wuPayment)}`;
+    await fetch(url, {method:'GET', mode:'no-cors'});
+  } catch(e){ console.log(e); }
+  document.getElementById('wu-success-sub').textContent = `${name} — $${total.toFixed(2)} via ${wuPayment}`;
+  document.getElementById('wu-success').style.display='block';
+  btn.style.display='none';
+  setTimeout(loadAll, 1500);
+}
+
+function resetWalkup(){
+  wuCart={}; wuMilk='Regular'; wuDonate=0; wuPayment='Venmo';
+  document.querySelectorAll('.drink-tap').forEach(el=>{el.classList.remove('selected');});
+  document.querySelectorAll('.drink-tap-qty').forEach(el=>el.textContent='1');
+  document.querySelectorAll('.milk-tap').forEach(b=>b.classList.remove('selected'));
+  document.querySelector('.milk-tap').classList.add('selected');
+  document.querySelectorAll('.donate-tap').forEach(b=>b.classList.remove('selected'));
+  document.getElementById('wu-name').value='';
+  selectPayment('Venmo');
+  updateWuSummary();
+  document.getElementById('wu-success').style.display='none';
+  document.getElementById('wu-charge-btn').style.display='block';
+  document.getElementById('wu-charge-btn').disabled=false;
+  document.getElementById('wu-charge-btn').textContent='✅  Charge & Log Order';
+}
+
+function switchTab(name, btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+buildWuMenus();
+</script>
+</body>
+</html>
