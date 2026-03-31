@@ -1,0 +1,100 @@
+function doGet(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var action = e && e.parameter ? e.parameter.action : '';
+
+  // ── GET ORDERS ──
+  if (action === 'getorders') {
+    var sheet = ss.getSheetByName("Pre-Orders");
+    var lastRow = sheet.getLastRow();
+    var orders = [];
+    if (lastRow >= 5) {
+      var data = sheet.getRange(5, 1, lastRow - 4, 10).getValues();
+      data.forEach(function(row, i) {
+        if (!row[1]) return;
+        orders.push({
+          row: i + 5,
+          timestamp: row[0] ? new Date(row[0]).toISOString() : '',
+          name: row[1], email: row[2], dept: row[3],
+          drinks: row[4], milk: row[5],
+          donation: row[6], total: row[7],
+          notes: row[8], paid: row[9]
+        });
+      });
+    }
+    return ContentService.createTextOutput(JSON.stringify({orders: orders}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // ── MARK PICKED UP ──
+  if (action === 'pickup') {
+    var sheet = ss.getSheetByName("Pre-Orders");
+    var row = parseInt(e.parameter.row);
+    if (row >= 5) sheet.getRange(row, 10).setValue('Yes');
+    return ContentService.createTextOutput(JSON.stringify({success:true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // ── WALK-UP ORDER ──
+  if (action === 'walkup') {
+    var sheet = ss.getSheetByName("Walk-Ups");
+    var lastRow = sheet.getLastRow() + 1;
+    if (lastRow < 5) lastRow = 5;
+    sheet.getRange(lastRow, 1, 1, 6).setValues([[
+      new Date(),
+      e.parameter.name    || 'Walk-up',
+      e.parameter.drink   || '',
+      e.parameter.milk    || '',
+      parseFloat(e.parameter.donation) || 0,
+      parseFloat(e.parameter.total)    || 0
+    ]]);
+    sheet.getRange(lastRow, 7).setValue(e.parameter.payment || 'Cash');
+    return ContentService.createTextOutput(JSON.stringify({success:true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // ── TOTALS ──
+  if (action === 'totals') {
+    var total = 0;
+    var preSheet = ss.getSheetByName("Pre-Orders");
+    var preLastRow = preSheet.getLastRow();
+    if (preLastRow >= 5) {
+      var preVals = preSheet.getRange(5, 8, preLastRow - 4, 1).getValues();
+      preVals.forEach(function(row){ total += parseFloat(row[0]) || 0; });
+    }
+    var wuSheet = ss.getSheetByName("Walk-Ups");
+    var wuLastRow = wuSheet.getLastRow();
+    if (wuLastRow >= 5) {
+      var wuVals = wuSheet.getRange(5, 6, wuLastRow - 4, 1).getValues();
+      wuVals.forEach(function(row){ total += parseFloat(row[0]) || 0; });
+    }
+    return ContentService.createTextOutput(JSON.stringify({total: total}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  // ── PRE-ORDER ──
+  if (action === 'order') {
+    var sheet = ss.getSheetByName("Pre-Orders");
+    var lastRow = sheet.getLastRow() + 1;
+    var row = [
+      new Date(), e.parameter.name||'', e.parameter.email||'',
+      e.parameter.dept||'', e.parameter.drinks||'', e.parameter.milk||'',
+      parseFloat(e.parameter.donation)||0, parseFloat(e.parameter.total)||0,
+      e.parameter.notes||'', ''
+    ];
+    sheet.getRange(lastRow, 1, 1, 10).setValues([row]);
+    return ContentService.createTextOutput(JSON.stringify({success:true}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  return ContentService.createTextOutput(JSON.stringify({success:true}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function testWrite() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("Pre-Orders");
+  var lastRow = sheet.getLastRow() + 1;
+  sheet.getRange(lastRow, 1, 1, 10).setValues([[
+    new Date(),"Test Name","test@test.com","Design","1x Latte","Regular",0,4.50,"test",""
+  ]]);
+}
