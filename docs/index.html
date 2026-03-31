@@ -33,78 +33,101 @@
   .hero-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 28px;}
   .event-details{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
   .event-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,145,58,0.2);border-radius:100px;padding:9px 18px;}
-  .event-pill-text{font-size:13px;color:var(--cream);font-weight:400;}
-
-  /* ── Countdown ── */
+  .event-pill-text{font-size:13px;color:var(--cream);}
   .countdown{display:flex;gap:16px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;}
   .countdown-unit{text-align:center;}
   .countdown-num{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,56px);font-weight:700;color:var(--gold-light);line-height:1;display:block;}
   .countdown-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;display:block;}
   .countdown-sep{font-family:'Cormorant Garamond',serif;font-size:40px;color:rgba(201,145,58,0.3);align-self:center;line-height:1;padding-bottom:16px;}
-
   .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
-  .hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--brown-deep);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;text-decoration:none;letter-spacing:0.5px;transition:all 0.2s;cursor:pointer;border:none;}
+  .hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--brown-deep);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
   .hero-cta:hover{background:var(--gold-light);transform:translateY(-2px);}
-  .hero-cta-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:13px 28px;border-radius:100px;text-decoration:none;letter-spacing:0.5px;transition:all 0.2s;border:1px solid rgba(255,255,255,0.25);}
+  .hero-cta-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:13px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s;border:1px solid rgba(255,255,255,0.25);}
   .hero-cta-outline:hover{background:rgba(255,255,255,0.08);}
-  .hero-mission{margin-top:24px;max-width:520px;font-size:14px;color:rgba(255,255,255,0.4);line-height:1.7;font-style:italic;}
+  .hero-mission{margin-top:24px;max-width:520px;font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;font-style:italic;}
 
   /* ── Payment banner ── */
   .payment-banner{background:linear-gradient(135deg,#0070cc,#005bb5);padding:16px 24px;text-align:center;}
   .payment-banner-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
   .payment-banner-text{color:white;font-size:13px;font-weight:500;}
   .venmo-btn{display:inline-flex;align-items:center;gap:8px;background:white;color:#008cff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:8px 20px;border-radius:100px;text-decoration:none;transition:all 0.2s;}
-  .venmo-btn:hover{transform:translateY(-1px);}
   .cash-pill{background:rgba(255,255,255,0.15);color:white;font-size:11px;padding:6px 14px;border-radius:100px;font-family:'DM Mono',monospace;letter-spacing:1px;}
 
-  /* ── Fundraiser thermometer ── */
+  /* ── Thermometer ── */
   .thermo-band{background:var(--brown-deep);padding:32px 24px;text-align:center;}
   .thermo-inner{max-width:600px;margin:0 auto;}
   .thermo-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brown-pale);margin-bottom:8px;}
   .thermo-amount{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,64px);font-weight:700;color:var(--gold-light);line-height:1;}
-.thermo-sub → color:var(--brown-pale)
-.thermo-goal → color:rgba(212,169,122,0.7)
+  .thermo-sub{font-size:13px;color:var(--brown-pale);margin-top:6px;margin-bottom:20px;opacity:0.85;}
   .thermo-bar-wrap{background:rgba(255,255,255,0.1);border-radius:100px;height:12px;overflow:hidden;}
   .thermo-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:100px;transition:width 1s ease;width:0%;}
-  .thermo-goal{font-size:11px;color:rgba(255,255,255,0.3);margin-top:8px;font-family:'DM Mono',monospace;}
+  .thermo-goal{font-size:12px;color:var(--brown-pale);margin-top:10px;font-family:'DM Mono',monospace;opacity:0.7;}
 
-  /* ── Mission band ── */
-  .mission-band{background:var(--cream-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 24px;text-align:center;}
+  /* ── About Kenzie's ── */
+  .about-band{background:var(--cream-dark);padding:72px 24px;border-top:1px solid var(--border);}
+  .about-inner{max-width:800px;margin:0 auto;}
+  .about-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-light);margin-bottom:12px;text-align:center;}
+  .about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:600;color:var(--brown-deep);line-height:1.1;margin-bottom:8px;text-align:center;}
+  .about-title em{font-style:italic;color:var(--gold);}
+  .about-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;color:var(--brown-mid);text-align:center;margin-bottom:40px;}
+  .about-body{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:40px;}
+  .about-text p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:16px;}
+  .about-text p strong{color:var(--brown-deep);}
+<div class="about-stats">
+  <div class="about-stat" style="border-left-color:var(--gold);background:linear-gradient(135deg,#fdf3e3,white);">
+    <div class="about-stat-num" style="font-size:24px;">🏆 #1</div>
+    <div class="about-stat-label"><strong>Best Barista in Grand Haven</strong> — BErista Ben was just named Grand Haven Tribune's People's Choice Best Barista. This is who's making your coffee April 16th.</div>
+  </div>
+  <div class="about-stat" style="border-left-color:var(--gold);background:linear-gradient(135deg,#fdf3e3,white);">
+    <div class="about-stat-num" style="font-size:22px;">☕ 🏅</div>
+    <div class="about-stat-label"><strong>Best Coffee Shop AND Best Nonprofit</strong> in Grand Haven — voted by the community, two years running.</div>
+  </div>
+  <div class="about-stat">
+    <div class="about-stat-num">100%</div>
+    <div class="about-stat-label">Non-profit — every dollar goes back into their mission and team</div>
+  </div>
+  <div class="about-stat">
+    <div class="about-stat-num">GH</div>
+    <div class="about-stat-label">Located at 1103 Washington Ave, Grand Haven — open Mon–Sat</div>
+  </div>
+</div>
+
+  /* ── Mission quote band ── */
+  .mission-band{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 24px;text-align:center;}
   .mission-band p{max-width:600px;margin:0 auto;font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--brown-mid);line-height:1.6;}
   .mission-band strong{color:var(--brown-deep);font-style:normal;}
-  .learn-more{display:inline-flex;align-items:center;gap:6px;margin-top:20px;color:var(--gold);font-size:13px;font-weight:500;text-decoration:none;border-bottom:1px solid rgba(201,145,58,0.3);padding-bottom:2px;transition:all 0.2s;}
-  .learn-more:hover{color:var(--brown-mid);}
 
   /* ── How it works ── */
   .how-band{padding:56px 24px;background:var(--warm-white);}
   .how-inner{max-width:700px;margin:0 auto;text-align:center;}
   .how-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-light);margin-bottom:10px;}
-  .how-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,40px);font-weight:600;color:var(--brown-deep);margin-bottom:36px;}
+  .how-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,40px);font-weight:600;color:var(--brown-deep);margin-bottom:32px;}
   .how-title em{font-style:italic;color:var(--gold);}
-  .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .how-step{text-align:center;padding:24px 16px;background:var(--cream);border-radius:16px;border:1px solid var(--border);position:relative;}
+  .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .how-step{text-align:center;padding:24px 16px;background:var(--cream);border-radius:16px;border:1px solid var(--border);}
   .how-step-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--gold);opacity:0.3;line-height:1;margin-bottom:8px;}
   .how-step-icon{font-size:28px;display:block;margin-bottom:10px;}
   .how-step-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brown-deep);margin-bottom:6px;}
   .how-step-text{font-size:13px;color:var(--text-light);line-height:1.6;}
 
-  /* ── Section ── */
-  .section{padding:48px 24px;max-width:860px;margin:0 auto;}
+  /* ── Order form ── */
+  .section{padding:48px 24px;max-width:900px;margin:0 auto;}
   .section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-light);margin-bottom:12px;}
   .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,44px);font-weight:600;color:var(--brown-deep);line-height:1.1;margin-bottom:28px;}
   .section-title em{font-style:italic;color:var(--gold);}
-
-  /* ── Order form ── */
   .order-wrap{background:var(--warm-white);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 40px rgba(44,26,14,0.07);}
   .drinks-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
   .drink-col{padding:24px;}
   .drink-col:first-child{border-right:1px solid var(--border);}
   .drink-col-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--brown-deep);margin-bottom:4px;}
   .drink-col-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:14px;}
-  .menu-grid{display:flex;flex-direction:column;gap:2px;}
-  .menu-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:8px;background:var(--cream);border:1px solid transparent;transition:all 0.15s;cursor:pointer;gap:8px;}
+  .menu-grid{display:flex;flex-direction:column;gap:4px;}
+
+  /* ── Menu items with per-drink milk ── */
+  .menu-item{border-radius:10px;background:var(--cream);border:1px solid transparent;transition:all 0.15s;}
   .menu-item:hover{border-color:rgba(201,145,58,0.25);background:#fdf6ec;}
   .menu-item.selected{border-color:var(--gold);background:#fdf3e3;}
+  .menu-item-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;cursor:pointer;gap:8px;}
   .menu-item-left{display:flex;align-items:center;gap:10px;flex:1;}
   .menu-check{width:18px;height:18px;border:1.5px solid rgba(92,61,30,0.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-size:11px;color:transparent;}
   .menu-item.selected .menu-check{background:var(--gold);border-color:var(--gold);color:white;}
@@ -115,13 +138,21 @@
   .qty-btn{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);background:white;color:var(--brown-mid);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
   .qty-btn:hover{background:var(--cream-dark);}
   .qty-val{font-family:'DM Mono',monospace;font-size:13px;min-width:16px;text-align:center;color:var(--brown-deep);}
+
+  /* ── Per-drink milk selector ── */
+  .milk-picker{display:none;padding:8px 12px 12px;border-top:1px solid rgba(201,145,58,0.15);}
+  .menu-item.selected .milk-picker{display:block;}
+  .milk-picker-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-light);margin-bottom:6px;}
+  .milk-pills{display:flex;gap:5px;flex-wrap:wrap;}
+  .milk-pill{padding:5px 12px;border-radius:100px;border:1px solid var(--border);background:white;font-size:11px;color:var(--text-mid);cursor:pointer;transition:all 0.12s;font-family:'DM Sans',sans-serif;}
+  .milk-pill:hover{border-color:rgba(201,145,58,0.3);}
+  .milk-pill.selected{background:var(--brown-deep);color:var(--cream);border-color:var(--brown-deep);}
+  .milk-pill.alt::after{content:' +$1.25';font-size:9px;opacity:0.7;}
+
   .order-divider{height:1px;background:var(--border);}
   .order-section{padding:22px 26px;}
   .order-section-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--brown-deep);margin-bottom:4px;}
   .order-section-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:14px;}
-  .milk-options{display:flex;gap:8px;flex-wrap:wrap;}
-  .milk-btn{padding:8px 18px;border-radius:100px;border:1px solid var(--border);background:var(--cream);font-size:13px;color:var(--text-mid);cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif;}
-  .milk-btn.selected{background:var(--brown-deep);color:var(--cream);border-color:var(--brown-deep);}
   .donate-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
   .donate-btn{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--cream);font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brown-mid);cursor:pointer;transition:all 0.15s;text-align:center;}
   .donate-btn.selected{background:var(--brown-deep);color:var(--gold-light);border-color:var(--brown-deep);}
@@ -174,12 +205,10 @@
   .share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
   .share-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all 0.2s;text-decoration:none;}
   .share-copy{background:var(--brown-deep);color:var(--cream);}
-  .share-copy:hover{background:var(--brown-mid);}
   .share-sms{background:#25d366;color:white;}
-  .share-sms:hover{background:#1fba58;}
   .share-email{background:var(--cream);color:var(--brown-mid);border:1px solid var(--border);}
 
-  /* ── Sticky mobile Venmo ── */
+  /* ── Sticky Venmo ── */
   .sticky-venmo{position:fixed;bottom:0;left:0;right:0;background:var(--venmo-blue);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;z-index:99;box-shadow:0 -4px 20px rgba(0,0,0,0.15);}
   .sticky-venmo-text{color:white;font-size:13px;font-weight:500;}
   .sticky-venmo-handle{font-family:'DM Mono',monospace;font-weight:700;font-size:14px;color:white;}
@@ -195,9 +224,11 @@
     .field-row{grid-template-columns:1fr;}
     .donate-grid{grid-template-columns:repeat(2,1fr);}
     .how-steps{grid-template-columns:1fr;}
+    .about-body{grid-template-columns:1fr;}
     .order-section,.submit-wrap{padding-left:16px;padding-right:16px;}
     .summary-bar,.payment-section{margin-left:16px;margin-right:16px;}
     .payment-options{flex-direction:column;}
+    .drink-col{padding:16px;}
   }
   @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
   .fade-up{animation:fadeUp 0.6s ease both;}
@@ -210,16 +241,11 @@
 </head>
 <body>
 
-<!-- ── STICKY VENMO BANNER ── -->
 <div class="sticky-venmo">
-  <div>
-    <div class="sticky-venmo-text">Pay at event:</div>
-    <div class="sticky-venmo-handle">@Kenziesbecafe-1</div>
-  </div>
+  <div><div class="sticky-venmo-text">Pay at event:</div><div class="sticky-venmo-handle">@Kenziesbecafe-1</div></div>
   <a class="sticky-venmo-btn" href="https://venmo.com/Kenziesbecafe-1" target="_blank">Open Venmo</a>
 </div>
 
-<!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-rings"></div>
   <div class="hero-tag fade-up">☕ Celebrity Barista Fundraiser</div>
@@ -231,8 +257,6 @@
     <div class="event-pill"><span class="event-pill-text">⏰ &nbsp;8:00am – 10:00am</span></div>
     <div class="event-pill"><span class="event-pill-text">📍 &nbsp;MillerKnoll Main Site · Front Lobby</span></div>
   </div>
-
-  <!-- COUNTDOWN -->
   <div class="countdown fade-up" id="countdown">
     <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
     <div class="countdown-sep">·</div>
@@ -242,15 +266,13 @@
     <div class="countdown-sep">·</div>
     <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
   </div>
-
   <div class="hero-btns fade-up">
     <button class="hero-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">☕ &nbsp;Pre-Order Now</button>
-    <a class="hero-cta-outline" href="https://www.kenziesbecafe.org" target="_blank">About Kenzie's ↗</a>
+    <a class="hero-cta-outline" href="#about">About Kenzie's ↓</a>
   </div>
   <p class="hero-mission fade-up">All proceeds support Kenzie's Be Cafe — providing meaningful employment for adults with intellectual and developmental disabilities in Grand Haven, Michigan.</p>
 </section>
 
-<!-- ── PAYMENT BANNER ── -->
 <div class="payment-banner">
   <div class="payment-banner-inner">
     <span class="payment-banner-text">💳 &nbsp;Payment at the event:</span>
@@ -259,24 +281,63 @@
   </div>
 </div>
 
-<!-- ── FUNDRAISER THERMOMETER ── -->
 <div class="thermo-band">
   <div class="thermo-inner">
     <div class="thermo-label">Total Raised So Far</div>
     <div class="thermo-amount" id="thermo-amount">$0</div>
-    <div class="thermo-sub">from pre-orders · help us hit our goal!</div>
+    <div class="thermo-sub">pre-orders + walk-ups combined · help us hit our goal!</div>
     <div class="thermo-bar-wrap"><div class="thermo-bar" id="thermo-bar"></div></div>
     <div class="thermo-goal">Goal: $500 &nbsp;·&nbsp; Every order counts ☕</div>
   </div>
 </div>
 
-<!-- ── MISSION ── -->
-<div class="mission-band">
-  <p>"At Kenzie's, our <strong>BEristas</strong> are at the heart of what we do — creating a warm and welcoming space for everyone who walks through our doors."</p>
-  <a class="learn-more" href="https://www.kenziesbecafe.org/our-mission" target="_blank">Learn about our mission ↗</a>
+<!-- ── ABOUT KENZIE'S ── -->
+<div class="about-band" id="about">
+  <div class="about-inner">
+    <div class="about-eyebrow">Our Partner</div>
+    <h2 class="about-title">About <em>Kenzie's Be Cafe</em></h2>
+    <p class="about-tagline">Coffee with a purpose. Community at its core.</p>
+
+    <div class="about-body">
+      <div class="about-text">
+        <p>Kenzie's Be Cafe is a <strong>non-profit coffee shop</strong> located right here in Grand Haven, Michigan. But it's much more than a place to get a great cup of coffee.</p>
+        <p>Founded with a mission to create <strong>meaningful employment and workforce development opportunities</strong> for adults with intellectual and developmental disabilities, Kenzie's gives their team — called <strong>BEristas</strong> — the training, support, and confidence to thrive in the workplace and beyond.</p>
+        <p>Every coffee you buy today directly funds their programs, their team, and their future. This isn't charity — it's community investing in community.</p>
+      </div>
+      <div class="about-stats">
+        <div class="about-stat">
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">Non-profit — every dollar goes back into their mission and team</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">☕</div>
+          <div class="about-stat-label">BEristas receive real workforce training and meaningful employment</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">GH</div>
+          <div class="about-stat-label">Located at 1103 Washington Ave, Grand Haven — open Mon–Sat</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-quote">
+      <div class="about-quote-text">"Our BEristas are at the heart of what we do. They are the ones who make our cafe a warm and welcoming space for everyone who walks through our doors."</div>
+      <div class="about-quote-attr">— Kenzie's Be Cafe</div>
+    </div>
+
+    <div class="about-links">
+      <a class="about-link about-link-primary" href="https://www.kenziesbecafe.org" target="_blank">Visit kenziesbecafe.org ↗</a>
+      <a class="about-link about-link-outline" href="https://www.kenziesbecafe.org/our-mission" target="_blank">Read their mission ↗</a>
+      <a class="about-link about-link-outline" href="https://www.kenziesbecafe.org/our-team" target="_blank">Meet the BEristas ↗</a>
+      <a class="about-link about-link-outline" href="https://www.kenziesbecafe.org/donate" target="_blank">Donate directly ↗</a>
+    </div>
+  </div>
 </div>
 
-<!-- ── HOW IT WORKS ── -->
+<div class="mission-band">
+  <p>"At Kenzie's, <strong>every cup of coffee</strong> is an opportunity — an opportunity to learn, to grow, and to show the world what people with intellectual and developmental disabilities can do."</p>
+</div>
+
 <div class="how-band">
   <div class="how-inner">
     <div class="how-eyebrow">Simple as can be</div>
@@ -286,13 +347,13 @@
         <div class="how-step-num">01</div>
         <span class="how-step-icon">☕</span>
         <div class="how-step-title">Pre-Order Online</div>
-        <div class="how-step-text">Pick your drinks and add a donation below. Takes less than 2 minutes.</div>
+        <div class="how-step-text">Pick your drinks below and add a donation. Takes less than 2 minutes.</div>
       </div>
       <div class="how-step">
         <div class="how-step-num">02</div>
         <span class="how-step-icon">📍</span>
         <div class="how-step-title">Show Up April 16th</div>
-        <div class="how-step-text">Come to the MillerKnoll Main Site Front Lobby between 8–10am.</div>
+        <div class="how-step-text">Come to the MillerKnoll Front Lobby anytime between 8–10am.</div>
       </div>
       <div class="how-step">
         <div class="how-step-num">03</div>
@@ -304,7 +365,6 @@
   </div>
 </div>
 
-<!-- ── ORDER ── -->
 <section class="section" id="order">
   <div class="section-eyebrow">Pre-Order</div>
   <h2 class="section-title">Order Your <em>Drink</em></h2>
@@ -312,24 +372,13 @@
     <div class="drinks-grid">
       <div class="drink-col">
         <div class="drink-col-title">☕ Hot Drinks</div>
-        <div class="drink-col-sub">16oz · select all that apply</div>
+        <div class="drink-col-sub">16oz · tap to select · choose milk per drink</div>
         <div class="menu-grid" id="hot-menu"></div>
       </div>
       <div class="drink-col">
         <div class="drink-col-title">🧊 Iced Drinks</div>
-        <div class="drink-col-sub">16oz · select all that apply</div>
+        <div class="drink-col-sub">16oz · tap to select · choose milk per drink</div>
         <div class="menu-grid" id="iced-menu"></div>
-      </div>
-    </div>
-    <div class="order-divider"></div>
-    <div class="order-section">
-      <div class="order-section-title">🥛 Alternative Milk</div>
-      <div class="order-section-sub">+$1.25 · optional</div>
-      <div class="milk-options">
-        <button class="milk-btn selected" onclick="selectMilk(this,'None')">Regular</button>
-        <button class="milk-btn" onclick="selectMilk(this,'Almond')">Almond</button>
-        <button class="milk-btn" onclick="selectMilk(this,'Oat')">Oat</button>
-        <button class="milk-btn" onclick="selectMilk(this,'Coconut')">Coconut</button>
       </div>
     </div>
     <div class="order-divider"></div>
@@ -359,7 +408,7 @@
         <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="you@millerknoll.com"></div>
         <div class="field"><label>Department</label><input type="text" id="f-dept" placeholder="Design, Finance..."></div>
       </div>
-      <div class="field" style="margin-top:4px;"><label>Special Instructions</label><input type="text" id="f-notes" placeholder="Extra shot, light ice, etc."></div>
+      <div class="field" style="margin-top:4px;"><label>Special Instructions</label><input type="text" id="f-notes" placeholder="Any other notes for your order..."></div>
     </div>
     <div class="order-divider"></div>
     <div class="summary-bar" style="margin-top:18px;">
@@ -399,18 +448,16 @@
   </div>
 </section>
 
-<!-- ── SHARE ── -->
 <div class="share-section">
   <div class="share-title">Spread the Word ☕</div>
-  <div class="share-sub">Help us raise more — share this with your colleagues!</div>
+  <div class="share-sub">Help us raise more — share with your colleagues!</div>
   <div class="share-btns">
     <button class="share-btn share-copy" onclick="copyLink()">📋 &nbsp;Copy Link</button>
     <a class="share-btn share-sms" href="sms:?body=Pre-order%20your%20coffee%20and%20support%20Kenzie's%20Be%20Cafe!%20April%2016th%208-10am%20at%20MillerKnoll.%20Order%20here:%20https://scherf6.github.io/kenzies-becafe">💬 &nbsp;Text a Colleague</a>
-    <a class="share-btn share-email" href="mailto:?subject=Support%20Kenzie's%20Be%20Cafe%20-%20April%2016th&body=Hey!%20We're%20doing%20a%20celebrity%20barista%20fundraiser%20for%20Kenzie's%20Be%20Cafe%20on%20April%2016th%208-10am%20in%20the%20Front%20Lobby.%20Pre-order%20your%20drink%20here:%20https://scherf6.github.io/kenzies-becafe">✉️ &nbsp;Email a Friend</a>
+    <a class="share-btn share-email" href="mailto:?subject=Support%20Kenzie's%20Be%20Cafe%20-%20April%2016th&body=Hey!%20We're%20doing%20a%20celebrity%20barista%20fundraiser%20for%20Kenzie's%20Be%20Cafe%20on%20April%2016th%208-10am%20in%20the%20Front%20Lobby.%20Pre-order%20here:%20https://scherf6.github.io/kenzies-becafe">✉️ &nbsp;Email a Friend</a>
   </div>
 </div>
 
-<!-- ── FOOTER ── -->
 <footer class="site-footer">
   ☕ &nbsp;Kenzie's Be Cafe × MillerKnoll &nbsp;·&nbsp; April 16, 2026 &nbsp;·&nbsp; 8:00am – 10:00am<br>
   <a href="https://www.kenziesbecafe.org" target="_blank">kenziesbecafe.org</a>
@@ -421,153 +468,186 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwg1TpmFmXnjGcA9w9Nobpna5nO78poj38QzbTXRqM0rmeFRRkCL6ZItbA6CQqvDvGx/exec";
 const EVENT_DATE = new Date("2026-04-16T08:00:00");
 const GOAL = 500;
+const MILKS = ['Regular','Almond +$1.25','Oat +$1.25','Coconut +$1.25'];
 
-// ── Countdown ─────────────────────────────────────────────────────────────
-function updateCountdown(){
-  const now = new Date();
-  const diff = EVENT_DATE - now;
-  if(diff <= 0){
-    document.getElementById('countdown').innerHTML = '<div style="font-family:\'Cormorant Garamond\',serif;font-size:28px;color:var(--gold-light);font-style:italic;">The event is happening now! ☕</div>';
-    return;
-  }
-  const d = Math.floor(diff/86400000);
-  const h = Math.floor((diff%86400000)/3600000);
-  const m = Math.floor((diff%3600000)/60000);
-  const s = Math.floor((diff%60000)/1000);
-  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
-}
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-// ── Thermometer ────────────────────────────────────────────────────────────
-async function loadThermo(){
-  try{
-    const r = await fetch(SCRIPT_URL + '?action=totals');
-    const data = await r.json();
-    const total = parseFloat(data.total) || 0;
-    document.getElementById('thermo-amount').textContent = '$' + total.toFixed(0);
-    const pct = Math.min(100, (total/GOAL)*100);
-    setTimeout(()=>{ document.getElementById('thermo-bar').style.width = pct + '%'; }, 500);
-  }catch(e){ /* silent fail */ }
-}
-loadThermo();
-
-// ── Menu ───────────────────────────────────────────────────────────────────
 const HOT = [
   {name:"Hot Chocolate",price:4.50},{name:"Americano",price:2.75},
   {name:"Chai",price:5.00},{name:"Dirty Chai",price:5.50},
   {name:"Latte",price:4.50},{name:"Mocha Latte",price:5.25},
   {name:"Caramel Latte",price:5.25},{name:"Vanilla Latte",price:5.25},
   {name:"Sugar Free Vanilla Latte",price:5.25},{name:"Butter Pecan Latte",price:5.25},
+  {name:"Bourbon Caramel Latte",price:5.50},
 ];
 const ICED = [
   {name:"Iced Americano",price:2.75},{name:"Iced Chai",price:5.00},
   {name:"Iced Dirty Chai",price:5.50},{name:"Iced Latte",price:4.50},
   {name:"Iced Mocha",price:5.25},{name:"Iced Caramel Latte",price:5.25},
   {name:"Iced Vanilla Latte",price:5.25},{name:"Iced Sugar Free Vanilla Latte",price:5.25},
-  {name:"Iced Butter Pecan Latte",price:5.25},
+  {name:"Iced Butter Pecan Latte",price:5.25},{name:"Iced Bourbon Caramel Latte",price:5.50},
 ];
 
-let cart={}, selectedMilk='None', donationAmount=0;
+let cart = {}; // name -> {qty, price, milk}
+let donationAmount = 0;
 
-function buildMenu(items,containerId){
-  const el=document.getElementById(containerId);
-  items.forEach(item=>{
-    const div=document.createElement('div');
-    div.className='menu-item';
-    div.id='item-'+item.name.replace(/\s+/g,'-');
-    div.innerHTML=`
-      <div class="menu-item-left" onclick="toggleItem('${item.name}',${item.price})">
-        <div class="menu-check">✓</div>
-        <span class="menu-name">${item.name}</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span class="menu-price">$${item.price.toFixed(2)}</span>
-        <div class="menu-qty">
-          <button class="qty-btn" onclick="changeQty('${item.name}',${item.price},-1)">−</button>
-          <span class="qty-val" id="qty-${item.name.replace(/\s+/g,'-')}">1</span>
-          <button class="qty-btn" onclick="changeQty('${item.name}',${item.price},1)">+</button>
+// ── Countdown ──────────────────────────────────────────────────────────────
+function updateCountdown(){
+  const diff = EVENT_DATE - new Date();
+  if(diff <= 0){
+    document.getElementById('countdown').innerHTML='<div style="font-family:\'Cormorant Garamond\',serif;font-size:28px;color:var(--gold-light);font-style:italic;">The event is happening now! ☕</div>';
+    return;
+  }
+  document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+// ── Thermometer ────────────────────────────────────────────────────────────
+async function loadThermo(){
+  try{
+    const r = await fetch(SCRIPT_URL+'?action=totals');
+    const data = await r.json();
+    const total = parseFloat(data.total)||0;
+    document.getElementById('thermo-amount').textContent='$'+total.toFixed(0);
+    setTimeout(()=>{ document.getElementById('thermo-bar').style.width=Math.min(100,(total/GOAL)*100)+'%'; },500);
+  }catch(e){}
+}
+loadThermo();
+
+// ── Build menu ─────────────────────────────────────────────────────────────
+function buildMenu(items, containerId){
+  const el = document.getElementById(containerId);
+  items.forEach(item => {
+    const id = item.name.replace(/\s+/g,'-');
+    const div = document.createElement('div');
+    div.className = 'menu-item';
+    div.id = 'item-'+id;
+
+    // Milk pills HTML
+    const milkPills = MILKS.map((m,i) =>
+      `<button class="milk-pill${i>0?' alt':''} ${i===0?'selected':''}" onclick="selectMilk('${item.name}','${m}',this)">${m.replace(' +$1.25','')}</button>`
+    ).join('');
+
+    div.innerHTML = `
+      <div class="menu-item-row" onclick="toggleItem('${item.name}',${item.price})">
+        <div class="menu-item-left">
+          <div class="menu-check">✓</div>
+          <span class="menu-name">${item.name}</span>
         </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="menu-price">$${item.price.toFixed(2)}</span>
+          <div class="menu-qty">
+            <button class="qty-btn" onclick="event.stopPropagation();changeQty('${item.name}',${item.price},-1)">−</button>
+            <span class="qty-val" id="qty-${id}">1</span>
+            <button class="qty-btn" onclick="event.stopPropagation();changeQty('${item.name}',${item.price},1)">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="milk-picker">
+        <div class="milk-picker-label">Milk preference</div>
+        <div class="milk-pills">${milkPills}</div>
       </div>`;
     el.appendChild(div);
   });
 }
 
-function toggleItem(name,price){
-  const id=name.replace(/\s+/g,'-');
-  const el=document.getElementById('item-'+id);
-  if(cart[name]){delete cart[name];el.classList.remove('selected');}
-  else{cart[name]={qty:1,price};el.classList.add('selected');}
-  document.getElementById('qty-'+id).textContent=cart[name]?.qty||1;
+function toggleItem(name, price){
+  const id = name.replace(/\s+/g,'-');
+  const el = document.getElementById('item-'+id);
+  if(cart[name]){
+    delete cart[name];
+    el.classList.remove('selected');
+  } else {
+    cart[name] = {qty:1, price, milk:'Regular'};
+    el.classList.add('selected');
+  }
+  document.getElementById('qty-'+id).textContent = cart[name]?.qty || 1;
   updateSummary();
 }
 
-function changeQty(name,price,delta){
-  if(!cart[name])return;
-  cart[name].qty=Math.max(1,cart[name].qty+delta);
-  document.getElementById('qty-'+name.replace(/\s+/g,'-')).textContent=cart[name].qty;
+function changeQty(name, price, delta){
+  if(!cart[name]) return;
+  cart[name].qty = Math.max(1, cart[name].qty + delta);
+  document.getElementById('qty-'+name.replace(/\s+/g,'-')).textContent = cart[name].qty;
   updateSummary();
 }
 
-function selectMilk(btn,milk){
-  document.querySelectorAll('.milk-btn').forEach(b=>b.classList.remove('selected'));
-  btn.classList.add('selected');selectedMilk=milk;updateSummary();
+function selectMilk(name, milk, btn){
+  if(!cart[name]) return;
+  cart[name].milk = milk;
+  // Update pill UI
+  const container = btn.closest('.milk-pills');
+  container.querySelectorAll('.milk-pill').forEach(p => p.classList.remove('selected'));
+  btn.classList.add('selected');
+  updateSummary();
 }
 
-function selectDonate(btn,amount){
+function selectDonate(btn, amount){
   document.querySelectorAll('.donate-btn').forEach(b=>b.classList.remove('selected'));
   btn.classList.add('selected');
   document.getElementById('custom-donate').value='';
-  donationAmount=amount;updateSummary();
+  donationAmount=amount;
+  updateSummary();
 }
 
 function customDonate(input){
   document.querySelectorAll('.donate-btn').forEach(b=>b.classList.remove('selected'));
-  donationAmount=parseFloat(input.value)||0;updateSummary();
+  donationAmount=parseFloat(input.value)||0;
+  updateSummary();
 }
 
 function calcTotal(){
-  let t=Object.values(cart).reduce((s,{qty,price})=>s+qty*price,0);
-  if(selectedMilk!=='None'&&Object.keys(cart).length>0)t+=1.25;
-  if(donationAmount>0)t+=donationAmount;
+  let t = 0;
+  Object.values(cart).forEach(({qty,price,milk})=>{
+    t += qty * price;
+    if(milk && milk !== 'Regular') t += qty * 1.25;
+  });
+  if(donationAmount>0) t += donationAmount;
   return t;
 }
 
 function updateSummary(){
-  const items=document.getElementById('summary-items');
-  let lines=[];
-  Object.entries(cart).forEach(([name,{qty,price}])=>lines.push(`${qty}× ${name} — $${(qty*price).toFixed(2)}`));
-  if(selectedMilk!=='None'&&Object.keys(cart).length>0)lines.push(`Alt Milk (${selectedMilk}) — $1.25`);
-  if(donationAmount>0)lines.push(`Donation — $${donationAmount.toFixed(2)}`);
-  items.innerHTML=lines.length?lines.map(l=>`<div>${l}</div>`).join(''):'<span style="color:rgba(92,61,30,0.3);font-style:italic;font-size:13px;">Nothing selected yet</span>';
-  document.getElementById('summary-total').textContent='$'+calcTotal().toFixed(2);
+  const items = document.getElementById('summary-items');
+  let lines = [];
+  Object.entries(cart).forEach(([name,{qty,price,milk}])=>{
+    const milkNote = milk && milk !== 'Regular' ? ` · ${milk.replace(' +$1.25','')} milk` : '';
+    const lineTotal = qty*price + (milk&&milk!=='Regular'?qty*1.25:0);
+    lines.push(`${qty}× ${name}${milkNote} — $${lineTotal.toFixed(2)}`);
+  });
+  if(donationAmount>0) lines.push(`Donation — $${donationAmount.toFixed(2)}`);
+  items.innerHTML = lines.length
+    ? lines.map(l=>`<div>${l}</div>`).join('')
+    : '<span style="color:rgba(92,61,30,0.3);font-style:italic;font-size:13px;">Nothing selected yet</span>';
+  document.getElementById('summary-total').textContent = '$'+calcTotal().toFixed(2);
 }
 
 async function submitOrder(){
-  const first=document.getElementById('f-first').value.trim();
-  const last=document.getElementById('f-last').value.trim();
-  const email=document.getElementById('f-email').value.trim();
-  const dept=document.getElementById('f-dept').value.trim();
-  const notes=document.getElementById('f-notes').value.trim();
+  const first = document.getElementById('f-first').value.trim();
+  const last  = document.getElementById('f-last').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const dept  = document.getElementById('f-dept').value.trim();
+  const notes = document.getElementById('f-notes').value.trim();
   if(!first||!last){alert('Please enter your name.');return;}
   if(!email||!email.includes('@')){alert('Please enter a valid email.');return;}
   if(Object.keys(cart).length===0&&donationAmount===0){alert('Please select a drink or add a donation.');return;}
-  const btn=document.getElementById('submit-btn');
-  btn.disabled=true;btn.textContent='Submitting...';
-  const orderLines=Object.entries(cart).map(([name,{qty,price}])=>`${qty}x ${name} ($${(qty*price).toFixed(2)})`).join(', ');
-  const total=calcTotal();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled=true; btn.textContent='Submitting...';
+  const orderLines = Object.entries(cart).map(([name,{qty,price,milk}])=>{
+    const milkNote = milk&&milk!=='Regular'?` (${milk.replace(' +$1.25','')} milk)`:'';
+    return `${qty}x ${name}${milkNote} ($${(qty*price+(milk&&milk!=='Regular'?qty*1.25:0)).toFixed(2)})`;
+  }).join(', ');
+  const total = calcTotal();
   try{
-    const url=`${SCRIPT_URL}?action=order&name=${encodeURIComponent(first+' '+last)}&email=${encodeURIComponent(email)}&dept=${encodeURIComponent(dept)}&drinks=${encodeURIComponent(orderLines)}&milk=${encodeURIComponent(selectedMilk!=='None'?selectedMilk+' (+$1.25)':'Regular')}&donation=${donationAmount.toFixed(2)}&total=${total.toFixed(2)}&notes=${encodeURIComponent(notes)}`;
+    const url=`${SCRIPT_URL}?action=order&name=${encodeURIComponent(first+' '+last)}&email=${encodeURIComponent(email)}&dept=${encodeURIComponent(dept)}&drinks=${encodeURIComponent(orderLines)}&milk=see+order+details&donation=${donationAmount.toFixed(2)}&total=${total.toFixed(2)}&notes=${encodeURIComponent(notes)}`;
     await fetch(url,{method:'GET',mode:'no-cors'});
   }catch(e){console.log(e);}
   document.getElementById('success-total-amt').textContent='$'+total.toFixed(2);
   document.querySelectorAll('.drinks-grid,.order-divider,.order-section,.summary-bar,.payment-section,.submit-wrap').forEach(el=>el.style.display='none');
   document.getElementById('success-screen').style.display='block';
   document.getElementById('order').scrollIntoView({behavior:'smooth'});
-  loadThermo();
+  setTimeout(loadThermo, 2000);
 }
 
 function copyLink(){
