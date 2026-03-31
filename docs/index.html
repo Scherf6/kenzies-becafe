@@ -76,7 +76,7 @@
   .menu-item:hover{border-color:rgba(201,145,58,0.25);background:#fdf6ec;}
   .menu-item.selected{border-color:var(--gold);background:#fdf3e3;}
   .menu-item-left{display:flex;align-items:center;gap:10px;flex:1;}
-  .menu-check{width:18px;height:18px;border:1.5px solid rgba(92,61,30,0.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-size:11px;}
+  .menu-check{width:18px;height:18px;border:1.5px solid rgba(92,61,30,0.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-size:11px;color:transparent;}
   .menu-item.selected .menu-check{background:var(--gold);border-color:var(--gold);color:white;}
   .menu-name{font-size:13px;color:var(--text-dark);}
   .menu-price{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-light);flex-shrink:0;}
@@ -185,7 +185,7 @@
   <p class="hero-sub fade-up">A fundraiser with MillerKnoll</p>
   <div class="hero-divider fade-up"></div>
   <div class="event-details fade-up">
-    <div class="event-pill"><span class="event-pill-text">📅 &nbsp;Tuesday, April 14th, 2026</span></div>
+    <div class="event-pill"><span class="event-pill-text">📅 &nbsp;Tuesday, April 16th, 2026</span></div>
     <div class="event-pill"><span class="event-pill-text">📍 &nbsp;MillerKnoll Main Site · Front Lobby</span></div>
     <div class="event-pill"><span class="event-pill-text">💳 &nbsp;Cash or Venmo</span></div>
   </div>
@@ -303,7 +303,7 @@
         </a>
         <div class="cash-option">💵 &nbsp;Cash at the event</div>
       </div>
-      <div class="payment-note-small">Pay when you pick up your drink · Front Lobby · April 14th</div>
+      <div class="payment-note-small">Pay when you pick up your drink · Front Lobby · April 16th</div>
     </div>
 
     <!-- SUBMIT -->
@@ -315,7 +315,7 @@
     <div class="success-screen" id="success-screen">
       <span class="success-icon">☕</span>
       <div class="success-title">You're all set!</div>
-      <div class="success-sub">Your order is confirmed for <strong>April 14th</strong>.<br>Find us in the Front Lobby — we'll have it ready for you!</div>
+      <div class="success-sub">Your order is confirmed for <strong>April 16th</strong>.<br>Find us in the Front Lobby — we'll have it ready for you!</div>
       <div class="success-payment">
         <div class="success-amount">Pay <span id="success-total-amt">$0.00</span> at pickup</div>
         <a class="success-venmo-btn" href="https://venmo.com/Kenziesbecafe-1" target="_blank">
@@ -335,13 +335,14 @@
 
 <!-- ── FOOTER ── -->
 <footer class="site-footer">
-  ☕ &nbsp;Kenzie's Be Cafe × MillerKnoll &nbsp;·&nbsp; April 14, 2026<br>
+  ☕ &nbsp;Kenzie's Be Cafe × MillerKnoll &nbsp;·&nbsp; April 16, 2026<br>
   <a href="https://www.kenziesbecafe.org" target="_blank">kenziesbecafe.org</a>
   &nbsp;·&nbsp; 1103 Washington Ave, Grand Haven, MI
 </footer>
 
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwg1TpmFmXnjGcA9w9Nobpna5nO78poj38QzbTXRqM0rmeFRRkCL6ZItbA6CQqvDvGx/exec";
+
 const HOT = [
   {name:"Hot Chocolate",price:4.50},{name:"Americano",price:2.75},
   {name:"Chai",price:5.00},{name:"Dirty Chai",price:5.50},
