@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kenzie's Be Cafe × MillerKnoll — Celebrity Barista Fundraiser</title>
-<meta property="og:title" content="Kenzie's Be Cafe × MillerKnoll Celebrity Barista Event">
-<meta property="og:description" content="Pre-order your coffee and support Kenzie's Be Cafe! April 16th, 8-10am at MillerKnoll Main Site.">
+<title>Kenzie's Be Cafe — Celebrity Barista Fundraiser</title>
+<meta property="og:title" content="Kenzie's Be Cafe Celebrity Barista Event">
+<meta property="og:description" content="Pre-order your coffee and support Kenzie's Be Cafe! April 16th, 8-10am at the Main Site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -73,24 +73,19 @@
   .about-body{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:40px;}
   .about-text p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:16px;}
   .about-text p strong{color:var(--brown-deep);}
-html<div class="about-stats">
-  <div class="about-stat" style="border-left-color:var(--gold);background:linear-gradient(135deg,#fdf3e3,white);">
-    <div class="about-stat-num">🏆 #1</div>
-    <div class="about-stat-label"><strong>Grand Haven's Best Barista</strong> — BErista Ben named People's Choice Best Barista by the Grand Haven Tribune. This is who's making your coffee April 16th.</div>
-  </div>
-  <div class="about-stat" style="border-left-color:var(--gold);background:linear-gradient(135deg,#fdf3e3,white);">
-    <div class="about-stat-num">2× 🏅</div>
-    <div class="about-stat-label"><strong>Best Coffee Shop AND Best Nonprofit</strong> in Grand Haven — voted by the community.</div>
-  </div>
-  <div class="about-stat">
-    <div class="about-stat-num">100%</div>
-    <div class="about-stat-label">Non-profit — every dollar goes back into their mission and team.</div>
-  </div>
-  <div class="about-stat">
-    <div class="about-stat-num" style="font-size:20px;line-height:1.4;">Grand Haven, MI</div>
-    <div class="about-stat-label">1103 Washington Ave — open Mon–Sat. Come visit after April 16th!</div>
-  </div>
-</div>
+  .about-stats{display:flex;flex-direction:column;gap:16px;}
+  .about-stat{background:white;border:1px solid var(--border);border-radius:14px;padding:20px 22px;border-left:4px solid var(--gold);}
+  .about-stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:4px;}
+  .about-stat-label{font-size:13px;color:var(--text-mid);line-height:1.4;}
+  .about-quote{background:var(--brown-deep);border-radius:16px;padding:32px 36px;margin-bottom:32px;text-align:center;}
+  .about-quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--cream);line-height:1.6;margin-bottom:12px;}
+  .about-quote-attr{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-pale);}
+  .about-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .about-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.2s;}
+  .about-link-primary{background:var(--brown-deep);color:var(--cream);}
+  .about-link-primary:hover{background:var(--brown-mid);}
+  .about-link-outline{background:transparent;color:var(--brown-mid);border:1px solid var(--border);}
+  .about-link-outline:hover{background:white;}
 
   /* ── Mission quote band ── */
   .mission-band{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 24px;text-align:center;}
@@ -250,12 +245,12 @@ html<div class="about-stats">
   <div class="hero-rings"></div>
   <div class="hero-tag fade-up">☕ Celebrity Barista Fundraiser</div>
   <h1 class="hero-logo fade-up">Kenzie's<br><em>Be Cafe</em></h1>
-  <p class="hero-sub fade-up">A fundraiser with MillerKnoll</p>
+  <p class="hero-sub fade-up">A fundraiser at the Main Site</p>
   <div class="hero-divider fade-up"></div>
   <div class="event-details fade-up">
     <div class="event-pill"><span class="event-pill-text">📅 &nbsp;Thursday, April 16th, 2026</span></div>
     <div class="event-pill"><span class="event-pill-text">⏰ &nbsp;8:00am – 10:00am</span></div>
-    <div class="event-pill"><span class="event-pill-text">📍 &nbsp;MillerKnoll Main Site · Front Lobby</span></div>
+    <div class="event-pill"><span class="event-pill-text">📍 &nbsp;Main Site · Front Lobby</span></div>
   </div>
   <div class="countdown fade-up" id="countdown">
     <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
@@ -353,7 +348,7 @@ html<div class="about-stats">
         <div class="how-step-num">02</div>
         <span class="how-step-icon">📍</span>
         <div class="how-step-title">Show Up April 16th</div>
-        <div class="how-step-text">Come to the MillerKnoll Front Lobby anytime between 8–10am.</div>
+        <div class="how-step-text">Come to the Main Site Front Lobby anytime between 8–10am.</div>
       </div>
       <div class="how-step">
         <div class="how-step-num">03</div>
@@ -405,7 +400,7 @@ html<div class="about-stats">
         <div class="field"><label>Last Name</label><input type="text" id="f-last" placeholder="Last name"></div>
       </div>
       <div class="field-row">
-        <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="you@millerknoll.com"></div>
+        <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="your@email.com"></div>
         <div class="field"><label>Department</label><input type="text" id="f-dept" placeholder="Design, Finance..."></div>
       </div>
       <div class="field" style="margin-top:4px;"><label>Special Instructions</label><input type="text" id="f-notes" placeholder="Any other notes for your order..."></div>
@@ -453,13 +448,13 @@ html<div class="about-stats">
   <div class="share-sub">Help us raise more — share with your colleagues!</div>
   <div class="share-btns">
     <button class="share-btn share-copy" onclick="copyLink()">📋 &nbsp;Copy Link</button>
-    <a class="share-btn share-sms" href="sms:?body=Pre-order%20your%20coffee%20and%20support%20Kenzie's%20Be%20Cafe!%20April%2016th%208-10am%20at%20MillerKnoll.%20Order%20here:%20https://scherf6.github.io/kenzies-becafe">💬 &nbsp;Text a Colleague</a>
+    <a class="share-btn share-sms" href="sms:?body=Pre-order%20your%20coffee%20and%20support%20Kenzie's%20Be%20Cafe!%20April%2016th%208-10am%20at%20the%20Main%20Site.%20Order%20here:%20https://scherf6.github.io/kenzies-becafe">💬 &nbsp;Text a Colleague</a>
     <a class="share-btn share-email" href="mailto:?subject=Support%20Kenzie's%20Be%20Cafe%20-%20April%2016th&body=Hey!%20We're%20doing%20a%20celebrity%20barista%20fundraiser%20for%20Kenzie's%20Be%20Cafe%20on%20April%2016th%208-10am%20in%20the%20Front%20Lobby.%20Pre-order%20here:%20https://scherf6.github.io/kenzies-becafe">✉️ &nbsp;Email a Friend</a>
   </div>
 </div>
 
 <footer class="site-footer">
-  ☕ &nbsp;Kenzie's Be Cafe × MillerKnoll &nbsp;·&nbsp; April 16, 2026 &nbsp;·&nbsp; 8:00am – 10:00am<br>
+  ☕ &nbsp;Kenzie's Be Cafe &nbsp;·&nbsp; April 16, 2026 &nbsp;·&nbsp; 8:00am – 10:00am<br>
   <a href="https://www.kenziesbecafe.org" target="_blank">kenziesbecafe.org</a>
   &nbsp;·&nbsp; 1103 Washington Ave, Grand Haven, MI &nbsp;·&nbsp; 616.345.0339
 </footer>
