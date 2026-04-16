@@ -5,656 +5,243 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kenzie's Be Cafe — Celebrity Barista Fundraiser</title>
 <meta property="og:title" content="Kenzie's Be Cafe Celebrity Barista Event">
-<meta property="og:description" content="Pre-order your coffee and support Kenzie's Be Cafe! April 16th, 8-10am at the Mainsite.">
+<meta property="og:description" content="Thank you to everyone who supported Kenzie's Be Cafe! April 16th was a huge success.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream:#faf7f2;--cream-dark:#f0ebe1;--brown-deep:#2c1a0e;--brown-mid:#5c3d1e;
-    --brown-light:#a06b3c;--brown-pale:#d4a97a;--warm-white:#fffdf9;
-    --text-dark:#1e1209;--text-mid:#5c3d1e;--text-light:#9a7a5a;
-    --gold:#c9913a;--gold-light:#e8c07a;--border:rgba(92,61,30,0.12);
-    --venmo-blue:#008cff;--venmo-dark:#0070cc;--sage:#7a8c6e;
+    --espresso: #2c1810;
+    --brown:    #6b4c3b;
+    --caramel:  #8b4513;
+    --gold:     #c8860a;
+    --cream:    #fdf6ed;
+    --warm:     #f5ebe0;
+    --border:   #e8d5c0;
+    --text:     #3d2314;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--warm-white);color:var(--text-dark);font-family:'DM Sans',sans-serif;overflow-x:hidden;padding-bottom:70px;}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); color: var(--text); font-family: 'Inter', sans-serif; }
 
-  /* ── Hero ── */
-  .hero{min-height:100vh;background:var(--brown-deep);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px 40px;text-align:center;overflow:hidden;}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 120% 80% at 50% 0%,rgba(160,107,60,0.25) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 100%,rgba(201,145,58,0.12) 0%,transparent 50%);pointer-events:none;}
-  .hero-rings{position:absolute;inset:0;pointer-events:none;}
-  .hero-rings::before{content:'';position:absolute;width:600px;height:600px;border:1px solid rgba(201,145,58,0.08);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
-  .hero-rings::after{content:'';position:absolute;width:900px;height:900px;border:1px solid rgba(201,145,58,0.05);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
-  .hero-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-pale);margin-bottom:20px;}
-  .hero-logo{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,10vw,96px);font-weight:600;color:var(--cream);line-height:1.0;letter-spacing:-1px;margin-bottom:8px;}
-  .hero-logo em{font-style:italic;color:var(--gold-light);}
-  .hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,26px);font-weight:400;font-style:italic;color:var(--brown-pale);margin-bottom:28px;}
-  .hero-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 28px;}
-  .event-details{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
-  .event-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,145,58,0.2);border-radius:100px;padding:9px 18px;}
-  .event-pill-text{font-size:13px;color:var(--cream);}
-  .countdown{display:flex;gap:16px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;}
-  .countdown-unit{text-align:center;}
-  .countdown-num{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,7vw,56px);font-weight:700;color:var(--gold-light);line-height:1;display:block;}
-  .countdown-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:4px;display:block;}
-  .countdown-sep{font-family:'Cormorant Garamond',serif;font-size:40px;color:rgba(201,145,58,0.3);align-self:center;line-height:1;padding-bottom:16px;}
-  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;}
-  .hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--brown-deep);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:14px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s;cursor:pointer;border:none;}
-  .hero-cta:hover{background:var(--gold-light);transform:translateY(-2px);}
-  .hero-cta-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:13px 28px;border-radius:100px;text-decoration:none;transition:all 0.2s;border:1px solid rgba(255,255,255,0.25);}
-  .hero-cta-outline:hover{background:rgba(255,255,255,0.08);}
-  .hero-mission{margin-top:24px;max-width:520px;font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;font-style:italic;}
-
-  /* ── Payment banner ── */
-  .payment-banner{background:linear-gradient(135deg,#0070cc,#005bb5);padding:16px 24px;text-align:center;}
-  .payment-banner-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
-  .payment-banner-text{color:white;font-size:13px;font-weight:500;}
-  .venmo-btn{display:inline-flex;align-items:center;gap:8px;background:white;color:#008cff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;padding:8px 20px;border-radius:100px;text-decoration:none;transition:all 0.2s;}
-  .cash-pill{background:rgba(255,255,255,0.15);color:white;font-size:11px;padding:6px 14px;border-radius:100px;font-family:'DM Mono',monospace;letter-spacing:1px;}
-
-  /* ── Thermometer ── */
-  .thermo-band{background:var(--brown-deep);padding:32px 24px;text-align:center;}
-  .thermo-inner{max-width:600px;margin:0 auto;}
-  .thermo-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brown-pale);margin-bottom:8px;}
-  .thermo-amount{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,8vw,64px);font-weight:700;color:var(--gold-light);line-height:1;}
-  .thermo-sub{font-size:13px;color:var(--brown-pale);margin-top:6px;margin-bottom:20px;opacity:0.85;}
-  .thermo-bar-wrap{background:rgba(255,255,255,0.1);border-radius:100px;height:12px;overflow:hidden;}
-  .thermo-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:100px;transition:width 1s ease;width:0%;}
-  .thermo-goal{font-size:12px;color:var(--brown-pale);margin-top:10px;font-family:'DM Mono',monospace;opacity:0.7;}
-
-  /* ── About Kenzie's ── */
-  .about-band{background:var(--cream-dark);padding:72px 24px;border-top:1px solid var(--border);}
-  .about-inner{max-width:800px;margin:0 auto;}
-  .about-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-light);margin-bottom:12px;text-align:center;}
-  .about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:600;color:var(--brown-deep);line-height:1.1;margin-bottom:8px;text-align:center;}
-  .about-title em{font-style:italic;color:var(--gold);}
-  .about-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;color:var(--brown-mid);text-align:center;margin-bottom:40px;}
-  .about-body{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-bottom:40px;}
-  .about-text p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:16px;}
-  .about-text p strong{color:var(--brown-deep);}
-  .about-stats{display:flex;flex-direction:column;gap:16px;}
-  .about-stat{background:white;border:1px solid var(--border);border-radius:14px;padding:20px 22px;border-left:4px solid var(--gold);}
-  .about-stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:4px;}
-  .about-stat-label{font-size:13px;color:var(--text-mid);line-height:1.4;}
-  .about-quote{background:var(--brown-deep);border-radius:16px;padding:32px 36px;margin-bottom:32px;text-align:center;}
-  .about-quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--cream);line-height:1.6;margin-bottom:12px;}
-  .about-quote-attr{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-pale);}
-  .about-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-  .about-link{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;text-decoration:none;transition:all 0.2s;}
-  .about-link-primary{background:var(--brown-deep);color:var(--cream);}
-  .about-link-primary:hover{background:var(--brown-mid);}
-  .about-link-outline{background:transparent;color:var(--brown-mid);border:1px solid var(--border);}
-  .about-link-outline:hover{background:white;}
-
-  /* ── Mission quote band ── */
-  .mission-band{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 24px;text-align:center;}
-  .mission-band p{max-width:600px;margin:0 auto;font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--brown-mid);line-height:1.6;}
-  .mission-band strong{color:var(--brown-deep);font-style:normal;}
-
-  /* ── How it works ── */
-  .how-band{padding:56px 24px;background:var(--warm-white);}
-  .how-inner{max-width:700px;margin:0 auto;text-align:center;}
-  .how-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-light);margin-bottom:10px;}
-  .how-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,40px);font-weight:600;color:var(--brown-deep);margin-bottom:32px;}
-  .how-title em{font-style:italic;color:var(--gold);}
-  .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .how-step{text-align:center;padding:24px 16px;background:var(--cream);border-radius:16px;border:1px solid var(--border);}
-  .how-step-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--gold);opacity:0.3;line-height:1;margin-bottom:8px;}
-  .how-step-icon{font-size:28px;display:block;margin-bottom:10px;}
-  .how-step-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brown-deep);margin-bottom:6px;}
-  .how-step-text{font-size:13px;color:var(--text-light);line-height:1.6;}
-
-  /* ── Order form ── */
-  .section{padding:48px 24px;max-width:900px;margin:0 auto;}
-  .section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-light);margin-bottom:12px;}
-  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,44px);font-weight:600;color:var(--brown-deep);line-height:1.1;margin-bottom:28px;}
-  .section-title em{font-style:italic;color:var(--gold);}
-  .order-wrap{background:var(--warm-white);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 40px rgba(44,26,14,0.07);}
-  .drinks-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-  .drink-col{padding:24px;}
-  .drink-col:first-child{border-right:1px solid var(--border);}
-  .drink-col-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--brown-deep);margin-bottom:4px;}
-  .drink-col-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:14px;}
-  .menu-grid{display:flex;flex-direction:column;gap:4px;}
-
-  /* ── Menu items with per-drink milk ── */
-  .menu-item{border-radius:10px;background:var(--cream);border:1px solid transparent;transition:all 0.15s;}
-  .menu-item:hover{border-color:rgba(201,145,58,0.25);background:#fdf6ec;}
-  .menu-item.selected{border-color:var(--gold);background:#fdf3e3;}
-  .menu-item-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;cursor:pointer;gap:8px;}
-  .menu-item-left{display:flex;align-items:center;gap:10px;flex:1;}
-  .menu-check{width:18px;height:18px;border:1.5px solid rgba(92,61,30,0.2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-size:11px;color:transparent;}
-  .menu-item.selected .menu-check{background:var(--gold);border-color:var(--gold);color:white;}
-  .menu-name{font-size:13px;color:var(--text-dark);}
-  .menu-price{font-family:'DM Mono',monospace;font-size:12px;color:var(--text-light);flex-shrink:0;}
-  .menu-qty{display:none;align-items:center;gap:6px;}
-  .menu-item.selected .menu-qty{display:flex;}
-  .qty-btn{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);background:white;color:var(--brown-mid);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
-  .qty-btn:hover{background:var(--cream-dark);}
-  .qty-val{font-family:'DM Mono',monospace;font-size:13px;min-width:16px;text-align:center;color:var(--brown-deep);}
-
-  /* ── Per-drink milk selector ── */
-  .milk-picker{display:none;padding:8px 12px 12px;border-top:1px solid rgba(201,145,58,0.15);}
-  .menu-item.selected .milk-picker{display:block;}
-  .milk-picker-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-light);margin-bottom:6px;}
-  .milk-pills{display:flex;gap:5px;flex-wrap:wrap;}
-  .milk-pill{padding:5px 12px;border-radius:100px;border:1px solid var(--border);background:white;font-size:11px;color:var(--text-mid);cursor:pointer;transition:all 0.12s;font-family:'DM Sans',sans-serif;}
-  .milk-pill:hover{border-color:rgba(201,145,58,0.3);}
-  .milk-pill.selected{background:var(--brown-deep);color:var(--cream);border-color:var(--brown-deep);}
-  .milk-pill.alt::after{content:' +$1.25';font-size:9px;opacity:0.7;}
-
-  .order-divider{height:1px;background:var(--border);}
-  .order-section{padding:22px 26px;}
-  .order-section-title{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--brown-deep);margin-bottom:4px;}
-  .order-section-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-light);margin-bottom:14px;}
-  .donate-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
-  .donate-btn{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--cream);font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brown-mid);cursor:pointer;transition:all 0.15s;text-align:center;}
-  .donate-btn.selected{background:var(--brown-deep);color:var(--gold-light);border-color:var(--brown-deep);}
-  .donate-custom{display:flex;align-items:center;gap:8px;margin-top:8px;}
-  .donate-custom-label{font-size:13px;color:var(--text-light);white-space:nowrap;}
-  .donate-custom input{flex:1;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:14px;color:var(--text-dark);background:var(--cream);outline:none;transition:border-color 0.15s;}
-  .donate-custom input:focus{border-color:var(--gold);}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-  .field{display:flex;flex-direction:column;gap:6px;}
-  .field label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-light);}
-  .field input{border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-dark);background:var(--cream);outline:none;transition:border-color 0.15s;width:100%;}
-  .field input:focus{border-color:var(--gold);}
-  .field input::placeholder{color:rgba(92,61,30,0.3);}
-  .summary-bar{margin:0 26px 4px;background:var(--cream-dark);border-radius:12px;padding:16px 18px;border:1px solid var(--border);}
-  .summary-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-light);margin-bottom:10px;}
-  .summary-items{font-size:13px;color:var(--text-mid);line-height:1.8;min-height:20px;}
-  .summary-total{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
-  .summary-total-label{font-size:13px;color:var(--text-light);}
-  .summary-total-amount{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--brown-deep);}
-  .payment-section{margin:0 26px 20px;background:linear-gradient(135deg,#e8f4ff,#d6ecff);border:1px solid rgba(0,140,255,0.2);border-radius:12px;padding:18px;}
-  .payment-section-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--venmo-dark);margin-bottom:12px;}
-  .payment-options{display:flex;gap:10px;flex-wrap:wrap;}
-  .venmo-pay-btn{display:inline-flex;align-items:center;gap:8px;background:var(--venmo-blue);color:white;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;padding:12px 20px;border-radius:100px;text-decoration:none;transition:all 0.2s;border:none;cursor:pointer;flex:1;justify-content:center;}
-  .venmo-pay-btn:hover{background:var(--venmo-dark);}
-  .cash-option{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--brown-mid);font-family:'DM Sans',sans-serif;font-size:13px;padding:12px 20px;border-radius:100px;border:1px solid var(--border);flex:1;justify-content:center;}
-  .payment-note-small{font-size:11px;color:rgba(0,100,180,0.6);margin-top:8px;text-align:center;font-family:'DM Mono',monospace;}
-  .submit-wrap{padding:0 26px 26px;}
-  .submit-btn{width:100%;background:var(--brown-deep);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:16px;border-radius:12px;cursor:pointer;border:none;transition:all 0.2s;}
-  .submit-btn:hover{background:var(--brown-mid);}
-  .submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
-
-  /* ── Success ── */
-  .success-screen{display:none;padding:48px 26px;text-align:center;}
-  .success-icon{font-size:56px;display:block;margin-bottom:16px;}
-  .success-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--brown-deep);margin-bottom:8px;}
-  .success-sub{font-size:14px;color:var(--text-light);line-height:1.7;margin-bottom:24px;}
-  .success-payment{display:flex;flex-direction:column;gap:12px;align-items:center;}
-  .success-venmo-btn{display:inline-flex;align-items:center;gap:10px;background:var(--venmo-blue);color:white;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;padding:14px 32px;border-radius:100px;text-decoration:none;}
-  .success-amount{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--brown-deep);}
-  .qr-box{background:white;border:1px solid var(--border);border-radius:16px;padding:20px 24px;display:inline-flex;flex-direction:column;align-items:center;gap:8px;margin-top:8px;}
-  .qr-img{width:140px;height:140px;border-radius:8px;}
-  .qr-handle{font-family:'DM Mono',monospace;font-size:15px;font-weight:500;color:var(--brown-deep);}
-  .qr-label{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:2px;font-family:'DM Mono',monospace;}
-  .success-cash{font-size:13px;color:var(--text-light);margin-top:4px;}
-
-  /* ── Share ── */
-  .share-section{padding:40px 24px;background:var(--cream-dark);text-align:center;border-top:1px solid var(--border);}
-  .share-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--brown-deep);margin-bottom:8px;}
-  .share-sub{font-size:13px;color:var(--text-light);margin-bottom:20px;}
-  .share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-  .share-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all 0.2s;text-decoration:none;}
-  .share-copy{background:var(--brown-deep);color:var(--cream);}
-  .share-sms{background:#25d366;color:white;}
-  .share-email{background:var(--cream);color:var(--brown-mid);border:1px solid var(--border);}
-
-  /* ── Sticky Venmo ── */
-  .sticky-venmo{position:fixed;bottom:0;left:0;right:0;background:var(--venmo-blue);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;z-index:99;box-shadow:0 -4px 20px rgba(0,0,0,0.15);}
-  .sticky-venmo-text{color:white;font-size:13px;font-weight:500;}
-  .sticky-venmo-handle{font-family:'DM Mono',monospace;font-weight:700;font-size:14px;color:white;}
-  .sticky-venmo-btn{background:white;color:var(--venmo-blue);font-weight:700;font-size:13px;padding:8px 18px;border-radius:100px;text-decoration:none;flex-shrink:0;}
-
-  /* ── Footer ── */
-  .site-footer{background:var(--brown-deep);color:rgba(255,255,255,0.4);text-align:center;padding:32px 20px;font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1px;line-height:2;}
-  .site-footer a{color:var(--brown-pale);text-decoration:none;}
-
-  @media(max-width:640px){
-    .drinks-grid{grid-template-columns:1fr;}
-    .drink-col:first-child{border-right:none;border-bottom:1px solid var(--border);}
-    .field-row{grid-template-columns:1fr;}
-    .donate-grid{grid-template-columns:repeat(2,1fr);}
-    .how-steps{grid-template-columns:1fr;}
-    .about-body{grid-template-columns:1fr;}
-    .order-section,.submit-wrap{padding-left:16px;padding-right:16px;}
-    .summary-bar,.payment-section{margin-left:16px;margin-right:16px;}
-    .payment-options{flex-direction:column;}
-    .drink-col{padding:16px;}
+  /* ── HERO ── */
+  .hero {
+    background: var(--espresso);
+    color: white;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
   }
-  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-  .fade-up{animation:fadeUp 0.6s ease both;}
-  .fade-up:nth-child(2){animation-delay:0.1s;}
-  .fade-up:nth-child(3){animation-delay:0.2s;}
-  .fade-up:nth-child(4){animation-delay:0.3s;}
-  .fade-up:nth-child(5){animation-delay:0.4s;}
-  .fade-up:nth-child(6){animation-delay:0.5s;}
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(200,134,10,.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(139,69,19,.22) 0%, transparent 55%);
+  }
+  .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,134,10,.18);
+    border: 1px solid rgba(200,134,10,.4);
+    color: #e8b84b;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .35rem .9rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: .6rem;
+  }
+  .hero h1 em { color: #e8b84b; font-style: italic; }
+  .hero-sub { color: rgba(255,255,255,.75); font-size: 1.05rem; margin-bottom: 1.6rem; line-height: 1.6; }
+  .hero-meta {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    color: rgba(255,255,255,.6); font-size: .85rem;
+  }
+  .hero-meta span::before { margin-right: .4rem; }
+
+  /* ── THANK YOU BANNER ── */
+  .thankyou-banner {
+    background: linear-gradient(135deg, #fff7ed, #fef3c7);
+    border-top: 4px solid var(--gold);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .thankyou-banner .ty-icon { font-size: 2.8rem; margin-bottom: .6rem; }
+  .thankyou-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--espresso);
+    margin-bottom: .5rem;
+  }
+  .thankyou-banner p { color: var(--brown); font-size: 1rem; line-height: 1.6; max-width: 520px; margin: 0 auto .8rem; }
+  .thankyou-banner .venmo-note {
+    display: inline-block;
+    background: var(--espresso);
+    color: white;
+    font-weight: 600;
+    font-size: .9rem;
+    padding: .5rem 1.2rem;
+    border-radius: 8px;
+    margin-top: .4rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem; }
+  .section-eyebrow {
+    font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: .5rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    color: var(--espresso);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--caramel); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ── ABOUT ── */
+  .about-body { color: var(--brown); line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem; }
+  .about-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .about-stat {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--caramel);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .about-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--espresso); font-weight: 600; }
+  .about-stat-label { font-size: .82rem; color: var(--brown); margin-top: .25rem; line-height: 1.4; }
+  .about-quote {
+    background: var(--warm);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--espresso);
+    line-height: 1.6;
+  }
+  .about-links { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .about-link {
+    display: inline-block;
+    background: white;
+    border: 1.5px solid var(--border);
+    color: var(--caramel);
+    font-size: .85rem;
+    font-weight: 600;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color .2s, background .2s;
+  }
+  .about-link:hover { border-color: var(--caramel); background: var(--warm); }
+
+  /* ── AWARD CARD ── */
+  .award-card {
+    background: linear-gradient(135deg, #fdf3e3, white);
+    border: 1.5px solid #f0d08a;
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .award-card .award-icon { font-size: 2rem; flex-shrink: 0; }
+  .award-card .award-title { font-weight: 700; color: var(--espresso); font-size: .95rem; margin-bottom: .2rem; }
+  .award-card .award-body { font-size: .85rem; color: var(--brown); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--espresso);
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: .82rem;
+  }
+  footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+  footer a:hover { color: white; }
 </style>
 </head>
 <body>
 
-<div class="sticky-venmo">
-  <div><div class="sticky-venmo-text">Pay at event:</div><div class="sticky-venmo-handle">@Kenziesbecafe-1</div></div>
-  <a class="sticky-venmo-btn" href="https://venmo.com/Kenziesbecafe-1" target="_blank">Open Venmo</a>
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Celebrity Barista Fundraiser</div>
+    <h1>Kenzie's <em>Be Cafe</em></h1>
+    <p class="hero-sub">Thank you for supporting our April 16th event — your generosity makes a real difference for Kenzie's and the people they employ.</p>
+    <div class="hero-meta">
+      <span>☕ April 16, 2025 · 8–10am</span>
+      <span>📍 Main Site · Front Lobby</span>
+      <span>💚 Grand Haven, MI</span>
+    </div>
+  </div>
+</header>
+
+<!-- ── THANK YOU BANNER ── -->
+<div class="thankyou-banner">
+  <div class="ty-icon">🎉</div>
+  <h2>Orders Are Closed — Thank You!</h2>
+  <p>The event has wrapped and the espresso machine has been cleaned! Thanks to everyone who pre-ordered and donated. Every cup counts.</p>
+  <p>Still want to support the mission? Venmo directly:</p>
+  <span class="venmo-note">💚 @Kenziesbecafe-1</span>
 </div>
 
-<section class="hero">
-  <div class="hero-rings"></div>
-  <div class="hero-tag fade-up">☕ Celebrity Barista Fundraiser</div>
-  <h1 class="hero-logo fade-up">Kenzie's<br><em>Be Cafe</em></h1>
-  <p class="hero-sub fade-up">A fundraiser at the Mainsite</p>
-  <div class="hero-divider fade-up"></div>
-  <div class="event-details fade-up">
-    <div class="event-pill"><span class="event-pill-text">📅 &nbsp;Thursday, April 16th, 2026</span></div>
-    <div class="event-pill"><span class="event-pill-text">⏰ &nbsp;8:00am – 10:00am</span></div>
-    <div class="event-pill"><span class="event-pill-text">📍 &nbsp;Mainsite · Front Lobby</span></div>
-  </div>
-  <div class="countdown fade-up" id="countdown">
-    <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
-    <div class="countdown-sep">·</div>
-    <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
-    <div class="countdown-sep">·</div>
-    <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Minutes</span></div>
-    <div class="countdown-sep">·</div>
-    <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Seconds</span></div>
-  </div>
-  <div class="hero-btns fade-up">
-    <button class="hero-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">☕ &nbsp;Pre-Order Now</button>
-    <a class="hero-cta-outline" href="#about">About Kenzie's ↓</a>
-  </div>
-  <p class="hero-mission fade-up">All proceeds support Kenzie's Be Cafe — providing meaningful employment for adults with intellectual and developmental disabilities in Grand Haven, Michigan.</p>
-</section>
+<hr class="divider">
 
-<div class="payment-banner">
-  <div class="payment-banner-inner">
-    <span class="payment-banner-text">💳 &nbsp;Payment at the event:</span>
-    <a class="venmo-btn" href="https://venmo.com/Kenziesbecafe-1" target="_blank"><strong>V</strong> &nbsp;Venmo @Kenziesbecafe-1</a>
-    <span class="cash-pill">💵 Cash accepted</span>
-  </div>
-</div>
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="section-eyebrow">About the Cause</div>
+  <h2 class="section-title">More Than a <em>Cup of Coffee</em></h2>
+  <p class="about-body">Kenzie's Be Cafe is a nonprofit coffee shop in Grand Haven, Michigan on a mission to create meaningful employment for adults with intellectual and developmental disabilities — the BEristas. Every drink you order supports real jobs, real skills, and real belonging in our community.</p>
 
-<div class="thermo-band">
-  <div class="thermo-inner">
-    <div class="thermo-label">Total Raised So Far</div>
-    <div class="thermo-amount" id="thermo-amount">$0</div>
-    <div class="thermo-sub">pre-orders + walk-ups combined · help us hit our goal!</div>
-    <div class="thermo-bar-wrap"><div class="thermo-bar" id="thermo-bar"></div></div>
-    <div class="thermo-goal">Goal: $500 &nbsp;·&nbsp; Every order counts ☕</div>
-  </div>
-</div>
-
-<!-- ── ABOUT KENZIE'S ── -->
-<div class="about-band" id="about">
-  <div class="about-inner">
-    <div class="about-eyebrow">Our Partner</div>
-    <h2 class="about-title">About <em>Kenzie's Be Cafe</em></h2>
-    <p class="about-tagline">Coffee with a purpose. Community at its core.</p>
-
-    <div class="about-body">
-      <div class="about-text">
-        <p>Kenzie's Be Cafe is a <strong>non-profit coffee shop</strong> located right here in Grand Haven, Michigan. But it's much more than a place to get a great cup of coffee.</p>
-        <p>Founded with a mission to create <strong>meaningful employment and workforce development opportunities</strong> for adults with intellectual and developmental disabilities, Kenzie's gives their team — called <strong>BEristas</strong> — the training, support, and confidence to thrive in the workplace and beyond.</p>
-        <p>Every coffee you buy today directly funds their programs, their team, and their future. This isn't charity — it's community investing in community.</p>
-      </div>
-      <div class="about-stats">
-        <div class="about-stat">
-          <div class="about-stat-num">100%</div>
-          <div class="about-stat-label">Non-profit — every dollar goes back into their mission and team</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-num">☕</div>
-          <div class="about-stat-label">BEristas receive real workforce training and meaningful employment</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-num">GH</div>
-          <div class="about-stat-label">Located at 1103 Washington Ave, Grand Haven — open Mon–Sat</div>
-        </div>
-      </div>
+  <div class="about-stats">
+    <div class="about-stat" style="border-left-color:var(--gold); background:linear-gradient(135deg,#fdf3e3,white);">
+      <div class="about-stat-num" style="font-size:1.4rem;">🏆 #1</div>
+      <div class="about-stat-label"><strong>Best Barista in the Tri-Cities</strong> — BErista Ben was named Grand Haven Tribune's People's Choice Best Barista. You're in good hands.</div>
     </div>
-
-    <div class="about-quote">
-      <div class="about-quote-text">"Our BEristas are at the heart of what we do. They are the ones who make our cafe a warm and welcoming space for everyone who walks through our doors."</div>
-      <div class="about-quote-attr">— Kenzie's Be Cafe</div>
+    <div class="about-stat">
+      <div class="about-stat-num">100%</div>
+      <div class="about-stat-label">of proceeds support BErista employment and the Kenzie's Be Cafe mission</div>
     </div>
-
-    <div class="about-links">
-      <a class="about-link about-link-primary" href="https://www.kenziesbecafe.org" target="_blank">Visit kenziesbecafe.org ↗</a>
-      <a class="about-link about-link-outline" href="https://www.kenziesbecafe.org/our-mission" target="_blank">Read their mission ↗</a>
-      <a class="about-link about-link-outline" href="https://www.kenziesbecafe.org/our-team" target="_blank">Meet the BEristas ↗</a>
-      <a class="about-link about-link-outline" href="https://www.kenziesbecafe.org/donate" target="_blank">Donate directly ↗</a>
+    <div class="about-stat">
+      <div class="about-stat-num">❤️</div>
+      <div class="about-stat-label">A community gathering place in Grand Haven since opening day</div>
     </div>
   </div>
-</div>
 
-<div class="mission-band">
-  <p>"At Kenzie's, <strong>every cup of coffee</strong> is an opportunity — an opportunity to learn, to grow, and to show the world what people with intellectual and developmental disabilities can do."</p>
-</div>
-
-<div class="how-band">
-  <div class="how-inner">
-    <div class="how-eyebrow">Simple as can be</div>
-    <h2 class="how-title">How It <em>Works</em></h2>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="how-step-num">01</div>
-        <span class="how-step-icon">☕</span>
-        <div class="how-step-title">Pre-Order Online</div>
-        <div class="how-step-text">Pick your drinks below and add a donation. Takes less than 2 minutes.</div>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">02</div>
-        <span class="how-step-icon">📍</span>
-        <div class="how-step-title">Show Up April 16th</div>
-        <div class="how-step-text">Come to the Mainsite Front Lobby anytime between 8–10am.</div>
-      </div>
-      <div class="how-step">
-        <div class="how-step-num">03</div>
-        <span class="how-step-icon">💳</span>
-        <div class="how-step-title">Pick Up & Pay</div>
-        <div class="how-step-text">Grab your drink, pay by Venmo or cash, and know you made a difference.</div>
-      </div>
-    </div>
+  <div class="about-quote">
+    "We believe that everyone deserves the opportunity to work, grow, and be celebrated for what they bring to the world."
   </div>
-</div>
 
-<section class="section" id="order">
-  <div class="section-eyebrow">Pre-Order</div>
-  <h2 class="section-title">Order Your <em>Drink</em></h2>
-  <div class="order-wrap">
-    <div class="drinks-grid">
-      <div class="drink-col">
-        <div class="drink-col-title">☕ Hot Drinks</div>
-        <div class="drink-col-sub">16oz · tap to select · choose milk per drink</div>
-        <div class="menu-grid" id="hot-menu"></div>
-      </div>
-      <div class="drink-col">
-        <div class="drink-col-title">🧊 Iced Drinks</div>
-        <div class="drink-col-sub">16oz · tap to select · choose milk per drink</div>
-        <div class="menu-grid" id="iced-menu"></div>
-      </div>
-    </div>
-    <div class="order-divider"></div>
-    <div class="order-section">
-      <div class="order-section-title">🤍 Add a Donation</div>
-      <div class="order-section-sub">100% goes to Kenzie's Be Cafe mission</div>
-      <div class="donate-grid">
-        <button class="donate-btn" onclick="selectDonate(this,5)">$5</button>
-        <button class="donate-btn" onclick="selectDonate(this,10)">$10</button>
-        <button class="donate-btn" onclick="selectDonate(this,25)">$25</button>
-        <button class="donate-btn" onclick="selectDonate(this,50)">$50</button>
-      </div>
-      <div class="donate-custom">
-        <span class="donate-custom-label">Custom: $</span>
-        <input type="number" id="custom-donate" placeholder="0.00" min="0" step="0.01" oninput="customDonate(this)">
-      </div>
-    </div>
-    <div class="order-divider"></div>
-    <div class="order-section">
-      <div class="order-section-title">👤 Your Info</div>
-      <div class="order-section-sub">So we have your order ready</div>
-      <div class="field-row">
-        <div class="field"><label>First Name</label><input type="text" id="f-first" placeholder="First name"></div>
-        <div class="field"><label>Last Name</label><input type="text" id="f-last" placeholder="Last name"></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>Email</label><input type="email" id="f-email" placeholder="your@email.com"></div>
-        <div class="field"><label>Department</label><input type="text" id="f-dept" placeholder="Design, Finance..."></div>
-      </div>
-      <div class="field" style="margin-top:4px;"><label>Special Instructions</label><input type="text" id="f-notes" placeholder="Any other notes for your order..."></div>
-    </div>
-    <div class="order-divider"></div>
-    <div class="summary-bar" style="margin-top:18px;">
-      <div class="summary-title">Order Summary</div>
-      <div class="summary-items" id="summary-items"><span style="color:rgba(92,61,30,0.3);font-style:italic;font-size:13px;">Nothing selected yet</span></div>
-      <div class="summary-total">
-        <span class="summary-total-label">Total due at pickup</span>
-        <span class="summary-total-amount" id="summary-total">$0.00</span>
-      </div>
-    </div>
-    <div class="payment-section">
-      <div class="payment-section-title">💳 Pay at the Event</div>
-      <div class="payment-options">
-        <a class="venmo-pay-btn" href="https://venmo.com/Kenziesbecafe-1" target="_blank"><span style="font-size:18px;font-weight:900;">V</span> &nbsp;Venmo @Kenziesbecafe-1</a>
-        <div class="cash-option">💵 &nbsp;Cash at the event</div>
-      </div>
-      <div class="payment-note-small">Pay when you pick up · Front Lobby · April 16th · 8–10am</div>
-    </div>
-    <div class="submit-wrap">
-      <button class="submit-btn" id="submit-btn" onclick="submitOrder()">☕ &nbsp;Place Pre-Order</button>
-    </div>
-    <div class="success-screen" id="success-screen">
-      <span class="success-icon">☕</span>
-      <div class="success-title">You're all set!</div>
-      <div class="success-sub">Your order is confirmed for <strong>April 16th, 8–10am</strong>.<br>Find us in the Front Lobby — we'll have it ready!</div>
-      <div class="success-payment">
-        <div class="success-amount">Pay <span id="success-total-amt">$0.00</span> at pickup</div>
-        <a class="success-venmo-btn" href="https://venmo.com/Kenziesbecafe-1" target="_blank"><span style="font-size:20px;font-weight:900;">V</span> &nbsp;Open Venmo</a>
-        <div class="qr-box">
-          <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://venmo.com/Kenziesbecafe-1&bgcolor=ffffff&color=2c1a0e" alt="Venmo QR">
-          <div class="qr-handle">@Kenziesbecafe-1</div>
-          <div class="qr-label">Scan to pay on Venmo</div>
-        </div>
-        <div class="success-cash">💵 Cash also accepted at the event</div>
-      </div>
-    </div>
+  <div class="about-links">
+    <a class="about-link" href="https://www.kenziesbecafe.org/" target="_blank">Visit Kenzie's ↗</a>
+    <a class="about-link" href="https://www.kenziesbecafe.org/our-mission" target="_blank">Read their mission ↗</a>
+    <a class="about-link" href="https://www.kenziesbecafe.org/meet-the-beristas" target="_blank">Meet the BEristas ↗</a>
+    <a class="about-link" href="https://www.kenziesbecafe.org/donate" target="_blank">Donate directly ↗</a>
   </div>
 </section>
 
-<div class="share-section">
-  <div class="share-title">Spread the Word ☕</div>
-  <div class="share-sub">Help us raise more — share with your colleagues!</div>
-  <div class="share-btns">
-    <button class="share-btn share-copy" onclick="copyLink()">📋 &nbsp;Copy Link</button>
-    <a class="share-btn share-sms" href="sms:?body=Pre-order%20your%20coffee%20and%20support%20Kenzie's%20Be%20Cafe!%20April%2016th%208-10am%20at%20the%20Main%20Site.%20Order%20here:%20https://scherf6.github.io/kenzies-becafe">💬 &nbsp;Text a Colleague</a>
-    <a class="share-btn share-email" href="mailto:?subject=Support%20Kenzie's%20Be%20Cafe%20-%20April%2016th&body=Hey!%20We're%20doing%20a%20celebrity%20barista%20fundraiser%20for%20Kenzie's%20Be%20Cafe%20on%20April%2016th%208-10am%20in%20the%20Front%20Lobby.%20Pre-order%20here:%20https://scherf6.github.io/kenzies-becafe">✉️ &nbsp;Email a Friend</a>
-  </div>
-</div>
+<hr class="divider">
 
-<footer class="site-footer">
-  ☕ &nbsp;Kenzie's Be Cafe &nbsp;·&nbsp; April 16, 2026 &nbsp;·&nbsp; 8:00am – 10:00am<br>
-  <a href="https://www.kenziesbecafe.org" target="_blank">kenziesbecafe.org</a>
-  &nbsp;·&nbsp; 1103 Washington Ave, Grand Haven, MI &nbsp;·&nbsp; 616.345.0339
+<footer>
+  <p>Kenzie's Be Cafe Celebrity Barista Fundraiser · April 16, 2025 · Grand Haven, MI</p>
+  <p style="margin-top:.4rem;"><a href="https://www.kenziesbecafe.org/" target="_blank">kenziesbecafe.org</a></p>
 </footer>
 
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwg1TpmFmXnjGcA9w9Nobpna5nO78poj38QzbTXRqM0rmeFRRkCL6ZItbA6CQqvDvGx/exec";
-const EVENT_DATE = new Date("2026-04-16T08:00:00");
-const GOAL = 500;
-const MILKS = ['Regular','Almond +$1.25','Oat +$1.25','Coconut +$1.25'];
-
-const HOT = [
-  {name:"Hot Chocolate",price:4.50},{name:"Americano",price:2.75},
-  {name:"Chai",price:5.00},{name:"Dirty Chai",price:5.50},
-  {name:"Latte",price:4.50},{name:"Mocha Latte",price:5.25},
-  {name:"Caramel Latte",price:5.25},{name:"Vanilla Latte",price:5.25},
-  {name:"Sugar Free Vanilla Latte",price:5.25},{name:"Butter Pecan Latte",price:5.25},
-  {name:"Bourbon Caramel Latte",price:5.50},
-];
-const ICED = [
-  {name:"Iced Americano",price:2.75},{name:"Iced Chai",price:5.00},
-  {name:"Iced Dirty Chai",price:5.50},{name:"Iced Latte",price:4.50},
-  {name:"Iced Mocha",price:5.25},{name:"Iced Caramel Latte",price:5.25},
-  {name:"Iced Vanilla Latte",price:5.25},{name:"Iced Sugar Free Vanilla Latte",price:5.25},
-  {name:"Iced Butter Pecan Latte",price:5.25},{name:"Iced Bourbon Caramel Latte",price:5.50},
-];
-
-let cart = {}; // name -> {qty, price, milk}
-let donationAmount = 0;
-
-// ── Countdown ──────────────────────────────────────────────────────────────
-function updateCountdown(){
-  const diff = EVENT_DATE - new Date();
-  if(diff <= 0){
-    document.getElementById('countdown').innerHTML='<div style="font-family:\'Cormorant Garamond\',serif;font-size:28px;color:var(--gold-light);font-style:italic;">The event is happening now! ☕</div>';
-    return;
-  }
-  document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
-  document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-mins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-secs').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-}
-setInterval(updateCountdown,1000);
-updateCountdown();
-
-// ── Thermometer ────────────────────────────────────────────────────────────
-async function loadThermo(){
-  try{
-    const r = await fetch(SCRIPT_URL+'?action=totals');
-    const data = await r.json();
-    const total = parseFloat(data.total)||0;
-    document.getElementById('thermo-amount').textContent='$'+total.toFixed(0);
-    setTimeout(()=>{ document.getElementById('thermo-bar').style.width=Math.min(100,(total/GOAL)*100)+'%'; },500);
-  }catch(e){}
-}
-loadThermo();
-
-// ── Build menu ─────────────────────────────────────────────────────────────
-function buildMenu(items, containerId){
-  const el = document.getElementById(containerId);
-  items.forEach(item => {
-    const id = item.name.replace(/\s+/g,'-');
-    const div = document.createElement('div');
-    div.className = 'menu-item';
-    div.id = 'item-'+id;
-
-    // Milk pills HTML
-    const milkPills = MILKS.map((m,i) =>
-      `<button class="milk-pill${i>0?' alt':''} ${i===0?'selected':''}" onclick="selectMilk('${item.name}','${m}',this)">${m.replace(' +$1.25','')}</button>`
-    ).join('');
-
-    div.innerHTML = `
-      <div class="menu-item-row" onclick="toggleItem('${item.name}',${item.price})">
-        <div class="menu-item-left">
-          <div class="menu-check">✓</div>
-          <span class="menu-name">${item.name}</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;">
-          <span class="menu-price">$${item.price.toFixed(2)}</span>
-          <div class="menu-qty">
-            <button class="qty-btn" onclick="event.stopPropagation();changeQty('${item.name}',${item.price},-1)">−</button>
-            <span class="qty-val" id="qty-${id}">1</span>
-            <button class="qty-btn" onclick="event.stopPropagation();changeQty('${item.name}',${item.price},1)">+</button>
-          </div>
-        </div>
-      </div>
-      <div class="milk-picker">
-        <div class="milk-picker-label">Milk preference</div>
-        <div class="milk-pills">${milkPills}</div>
-      </div>`;
-    el.appendChild(div);
-  });
-}
-
-function toggleItem(name, price){
-  const id = name.replace(/\s+/g,'-');
-  const el = document.getElementById('item-'+id);
-  if(cart[name]){
-    delete cart[name];
-    el.classList.remove('selected');
-  } else {
-    cart[name] = {qty:1, price, milk:'Regular'};
-    el.classList.add('selected');
-  }
-  document.getElementById('qty-'+id).textContent = cart[name]?.qty || 1;
-  updateSummary();
-}
-
-function changeQty(name, price, delta){
-  if(!cart[name]) return;
-  cart[name].qty = Math.max(1, cart[name].qty + delta);
-  document.getElementById('qty-'+name.replace(/\s+/g,'-')).textContent = cart[name].qty;
-  updateSummary();
-}
-
-function selectMilk(name, milk, btn){
-  if(!cart[name]) return;
-  cart[name].milk = milk;
-  // Update pill UI
-  const container = btn.closest('.milk-pills');
-  container.querySelectorAll('.milk-pill').forEach(p => p.classList.remove('selected'));
-  btn.classList.add('selected');
-  updateSummary();
-}
-
-function selectDonate(btn, amount){
-  document.querySelectorAll('.donate-btn').forEach(b=>b.classList.remove('selected'));
-  btn.classList.add('selected');
-  document.getElementById('custom-donate').value='';
-  donationAmount=amount;
-  updateSummary();
-}
-
-function customDonate(input){
-  document.querySelectorAll('.donate-btn').forEach(b=>b.classList.remove('selected'));
-  donationAmount=parseFloat(input.value)||0;
-  updateSummary();
-}
-
-function calcTotal(){
-  let t = 0;
-  Object.values(cart).forEach(({qty,price,milk})=>{
-    t += qty * price;
-    if(milk && milk !== 'Regular') t += qty * 1.25;
-  });
-  if(donationAmount>0) t += donationAmount;
-  return t;
-}
-
-function updateSummary(){
-  const items = document.getElementById('summary-items');
-  let lines = [];
-  Object.entries(cart).forEach(([name,{qty,price,milk}])=>{
-    const milkNote = milk && milk !== 'Regular' ? ` · ${milk.replace(' +$1.25','')} milk` : '';
-    const lineTotal = qty*price + (milk&&milk!=='Regular'?qty*1.25:0);
-    lines.push(`${qty}× ${name}${milkNote} — $${lineTotal.toFixed(2)}`);
-  });
-  if(donationAmount>0) lines.push(`Donation — $${donationAmount.toFixed(2)}`);
-  items.innerHTML = lines.length
-    ? lines.map(l=>`<div>${l}</div>`).join('')
-    : '<span style="color:rgba(92,61,30,0.3);font-style:italic;font-size:13px;">Nothing selected yet</span>';
-  document.getElementById('summary-total').textContent = '$'+calcTotal().toFixed(2);
-}
-
-async function submitOrder(){
-  const first = document.getElementById('f-first').value.trim();
-  const last  = document.getElementById('f-last').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const dept  = document.getElementById('f-dept').value.trim();
-  const notes = document.getElementById('f-notes').value.trim();
-  if(!first||!last){alert('Please enter your name.');return;}
-  if(!email||!email.includes('@')){alert('Please enter a valid email.');return;}
-  if(Object.keys(cart).length===0&&donationAmount===0){alert('Please select a drink or add a donation.');return;}
-  const btn = document.getElementById('submit-btn');
-  btn.disabled=true; btn.textContent='Submitting...';
-  const orderLines = Object.entries(cart).map(([name,{qty,price,milk}])=>{
-    const milkNote = milk&&milk!=='Regular'?` (${milk.replace(' +$1.25','')} milk)`:'';
-    return `${qty}x ${name}${milkNote} ($${(qty*price+(milk&&milk!=='Regular'?qty*1.25:0)).toFixed(2)})`;
-  }).join(', ');
-  const total = calcTotal();
-  try{
-    const url=`${SCRIPT_URL}?action=order&name=${encodeURIComponent(first+' '+last)}&email=${encodeURIComponent(email)}&dept=${encodeURIComponent(dept)}&drinks=${encodeURIComponent(orderLines)}&milk=see+order+details&donation=${donationAmount.toFixed(2)}&total=${total.toFixed(2)}&notes=${encodeURIComponent(notes)}`;
-    await fetch(url,{method:'GET',mode:'no-cors'});
-  }catch(e){console.log(e);}
-  document.getElementById('success-total-amt').textContent='$'+total.toFixed(2);
-  document.querySelectorAll('.drinks-grid,.order-divider,.order-section,.summary-bar,.payment-section,.submit-wrap').forEach(el=>el.style.display='none');
-  document.getElementById('success-screen').style.display='block';
-  document.getElementById('order').scrollIntoView({behavior:'smooth'});
-  setTimeout(loadThermo, 2000);
-}
-
-function copyLink(){
-  navigator.clipboard.writeText(window.location.href).then(()=>{
-    const btn=document.querySelector('.share-copy');
-    btn.textContent='✅ Copied!';
-    setTimeout(()=>btn.textContent='📋  Copy Link',2000);
-  });
-}
-
-buildMenu(HOT,'hot-menu');
-buildMenu(ICED,'iced-menu');
-</script>
 </body>
 </html>
