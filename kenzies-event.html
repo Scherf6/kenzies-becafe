@@ -3,468 +3,245 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kenzie's Be Cafe × MillerKnoll — Celebrity Barista Event</title>
+<title>Kenzie's Be Cafe — Celebrity Barista Fundraiser</title>
+<meta property="og:title" content="Kenzie's Be Cafe Celebrity Barista Event">
+<meta property="og:description" content="Thank you to everyone who supported Kenzie's Be Cafe! April 16th was a huge success.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream:     #faf7f2;
-    --cream-dark:#f0ebe1;
-    --brown-deep:#2c1a0e;
-    --brown-mid: #5c3d1e;
-    --brown-light:#a06b3c;
-    --brown-pale:#d4a97a;
-    --warm-white:#fffdf9;
-    --sage:      #7a8c6e;
-    --sage-light:#c4d4b8;
-    --text-dark: #1e1209;
-    --text-mid:  #5c3d1e;
-    --text-light:#9a7a5a;
-    --gold:      #c9913a;
-    --gold-light:#e8c07a;
-    --border:    rgba(92,61,30,0.12);
+    --espresso: #2c1810;
+    --brown:    #6b4c3b;
+    --caramel:  #8b4513;
+    --gold:     #c8860a;
+    --cream:    #fdf6ed;
+    --warm:     #f5ebe0;
+    --border:   #e8d5c0;
+    --text:     #3d2314;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--warm-white);color:var(--text-dark);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); color: var(--text); font-family: 'Inter', sans-serif; }
 
-  /* ── Grain texture ── */
-  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.4;}
-
-  /* ── Hero ── */
-  .hero{min-height:100vh;background:var(--brown-deep);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center;overflow:hidden;}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 120% 80% at 50% 0%,rgba(160,107,60,0.25) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 100%,rgba(201,145,58,0.12) 0%,transparent 50%);pointer-events:none;}
-  .hero-rings{position:absolute;inset:0;pointer-events:none;}
-  .hero-rings::before{content:'';position:absolute;width:600px;height:600px;border:1px solid rgba(201,145,58,0.08);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
-  .hero-rings::after{content:'';position:absolute;width:900px;height:900px;border:1px solid rgba(201,145,58,0.05);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);}
-  .hero-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-pale);margin-bottom:20px;opacity:0.9;}
-  .hero-logo{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,10vw,96px);font-weight:600;color:var(--cream);line-height:1.0;letter-spacing:-1px;margin-bottom:8px;}
-  .hero-logo em{font-style:italic;color:var(--gold-light);}
-  .hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,26px);font-weight:400;font-style:italic;color:var(--brown-pale);margin-bottom:32px;}
-  .hero-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 32px;}
-  .event-details{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
-  .event-pill{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,145,58,0.2);border-radius:100px;padding:10px 20px;}
-  .event-pill-icon{font-size:16px;}
-  .event-pill-text{font-size:13px;color:var(--cream);font-weight:400;letter-spacing:0.3px;}
-  .hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--brown-deep);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;padding:14px 32px;border-radius:100px;text-decoration:none;letter-spacing:0.5px;transition:all 0.2s;cursor:pointer;border:none;}
-  .hero-cta:hover{background:var(--gold-light);transform:translateY(-2px);}
-  .hero-mission{margin-top:48px;max-width:520px;font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;font-style:italic;}
-
-  /* ── Section ── */
-  .section{padding:72px 24px;max-width:760px;margin:0 auto;}
-  .section-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--brown-light);margin-bottom:12px;}
-  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5vw,44px);font-weight:600;color:var(--brown-deep);line-height:1.1;margin-bottom:24px;}
-  .section-title em{font-style:italic;color:var(--gold);}
-
-  /* ── Mission band ── */
-  .mission-band{background:var(--cream-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px 24px;text-align:center;}
-  .mission-band p{max-width:600px;margin:0 auto;font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--brown-mid);line-height:1.6;}
-  .mission-band strong{color:var(--brown-deep);font-style:normal;}
-
-  /* ── Order form ── */
-  .order-wrap{background:var(--warm-white);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:0 4px 40px rgba(44,26,14,0.07);}
-  .order-section{padding:28px 28px 0;}
-  .order-section-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--brown-deep);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
-  .order-section-sub{font-size:12px;color:var(--text-light);margin-bottom:20px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;}
-  .menu-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:28px;}
-  .menu-item{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-radius:10px;background:var(--cream);border:1px solid transparent;transition:all 0.15s;cursor:pointer;gap:12px;}
-  .menu-item:hover{border-color:rgba(201,145,58,0.25);background:#fdf6ec;}
-  .menu-item.selected{border-color:var(--gold);background:#fdf3e3;}
-  .menu-item-left{display:flex;align-items:center;gap:12px;flex:1;}
-  .menu-check{width:20px;height:20px;border:1.5px solid rgba(92,61,30,0.2);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s;font-size:12px;}
-  .menu-item.selected .menu-check{background:var(--gold);border-color:var(--gold);color:white;}
-  .menu-name{font-size:14px;color:var(--text-dark);font-weight:400;}
-  .menu-price{font-family:'DM Mono',monospace;font-size:13px;color:var(--text-light);}
-  .menu-qty{display:none;align-items:center;gap:8px;}
-  .menu-item.selected .menu-qty{display:flex;}
-  .qty-btn{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:white;color:var(--brown-mid);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all 0.15s;}
-  .qty-btn:hover{background:var(--cream-dark);}
-  .qty-val{font-family:'DM Mono',monospace;font-size:14px;min-width:20px;text-align:center;color:var(--brown-deep);}
-
-  /* ── Milk selector ── */
-  .milk-section{padding:0 28px 28px;}
-  .milk-options{display:flex;gap:8px;flex-wrap:wrap;}
-  .milk-btn{padding:8px 18px;border-radius:100px;border:1px solid var(--border);background:var(--cream);font-size:13px;color:var(--text-mid);cursor:pointer;transition:all 0.15s;font-family:'DM Sans',sans-serif;}
-  .milk-btn:hover{border-color:rgba(201,145,58,0.3);}
-  .milk-btn.selected{background:var(--brown-deep);color:var(--cream);border-color:var(--brown-deep);}
-  .milk-note{font-size:11px;color:var(--text-light);margin-top:8px;font-family:'DM Mono',monospace;}
-
-  /* ── Divider ── */
-  .order-divider{height:1px;background:var(--border);margin:0 28px;}
-
-  /* ── Donation ── */
-  .donate-section{padding:28px;}
-  .donate-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
-  .donate-btn{padding:12px 8px;border-radius:10px;border:1px solid var(--border);background:var(--cream);font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--brown-mid);cursor:pointer;transition:all 0.15s;text-align:center;}
-  .donate-btn:hover{border-color:rgba(201,145,58,0.3);}
-  .donate-btn.selected{background:var(--brown-deep);color:var(--gold-light);border-color:var(--brown-deep);}
-  .donate-custom{display:flex;align-items:center;gap:8px;margin-top:8px;}
-  .donate-custom-label{font-size:13px;color:var(--text-light);white-space:nowrap;}
-  .donate-custom input{flex:1;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:14px;color:var(--text-dark);background:var(--cream);outline:none;transition:border-color 0.15s;}
-  .donate-custom input:focus{border-color:var(--gold);}
-
-  /* ── Contact fields ── */
-  .contact-section{padding:0 28px 28px;}
-  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-  .field{display:flex;flex-direction:column;gap:6px;}
-  .field label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-light);}
-  .field input,.field select,.field textarea{border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text-dark);background:var(--cream);outline:none;transition:border-color 0.15s;width:100%;}
-  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);}
-  .field input::placeholder{color:rgba(92,61,30,0.3);}
-
-  /* ── Order summary ── */
-  .summary-bar{margin:0 28px 28px;background:var(--cream-dark);border-radius:12px;padding:16px 18px;border:1px solid var(--border);}
-  .summary-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--brown-light);margin-bottom:10px;}
-  .summary-items{font-size:13px;color:var(--text-mid);line-height:1.8;min-height:20px;}
-  .summary-total{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
-  .summary-total-label{font-size:13px;color:var(--text-light);}
-  .summary-total-amount{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:var(--brown-deep);}
-
-  /* ── Submit ── */
-  .submit-wrap{padding:0 28px 28px;}
-  .submit-btn{width:100%;background:var(--brown-deep);color:var(--cream);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;padding:16px;border-radius:12px;cursor:pointer;border:none;transition:all 0.2s;letter-spacing:0.3px;}
-  .submit-btn:hover{background:var(--brown-mid);}
-  .submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
-  .payment-note{text-align:center;font-size:12px;color:var(--text-light);margin-top:10px;line-height:1.6;}
-  .payment-note strong{color:var(--brown-mid);}
-
-  /* ── Success ── */
-  .success-screen{display:none;padding:48px 28px;text-align:center;}
-  .success-icon{font-size:56px;display:block;margin-bottom:20px;}
-  .success-title{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--brown-deep);margin-bottom:8px;}
-  .success-sub{font-size:14px;color:var(--text-light);line-height:1.7;margin-bottom:24px;}
-  .venmo-box{background:var(--cream-dark);border:1px solid var(--border);border-radius:12px;padding:20px;display:inline-block;}
-  .venmo-handle{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--brown-deep);}
-  .venmo-label{font-size:11px;color:var(--text-light);margin-top:4px;text-transform:uppercase;letter-spacing:2px;font-family:'DM Mono',monospace;}
-
-  /* ── Footer ── */
-  .site-footer{background:var(--brown-deep);color:rgba(255,255,255,0.4);text-align:center;padding:32px 20px;font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1px;}
-  .site-footer a{color:var(--brown-pale);text-decoration:none;}
-
-  @media(max-width:600px){
-    .field-row{grid-template-columns:1fr;}
-    .donate-grid{grid-template-columns:repeat(2,1fr);}
-    .event-details{gap:12px;}
-    .order-section,.milk-section,.contact-section,.donate-section,.submit-wrap{padding-left:18px;padding-right:18px;}
-    .summary-bar{margin-left:18px;margin-right:18px;}
-    .order-divider{margin:0 18px;}
+  /* ── HERO ── */
+  .hero {
+    background: var(--espresso);
+    color: white;
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
   }
-  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-  .fade-up{animation:fadeUp 0.6s ease both;}
-  .fade-up:nth-child(2){animation-delay:0.1s;}
-  .fade-up:nth-child(3){animation-delay:0.2s;}
-  .fade-up:nth-child(4){animation-delay:0.3s;}
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(200,134,10,.18) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 20%, rgba(139,69,19,.22) 0%, transparent 55%);
+  }
+  .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(200,134,10,.18);
+    border: 1px solid rgba(200,134,10,.4);
+    color: #e8b84b;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .35rem .9rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: .6rem;
+  }
+  .hero h1 em { color: #e8b84b; font-style: italic; }
+  .hero-sub { color: rgba(255,255,255,.75); font-size: 1.05rem; margin-bottom: 1.6rem; line-height: 1.6; }
+  .hero-meta {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    color: rgba(255,255,255,.6); font-size: .85rem;
+  }
+  .hero-meta span::before { margin-right: .4rem; }
+
+  /* ── THANK YOU BANNER ── */
+  .thankyou-banner {
+    background: linear-gradient(135deg, #fff7ed, #fef3c7);
+    border-top: 4px solid var(--gold);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+  }
+  .thankyou-banner .ty-icon { font-size: 2.8rem; margin-bottom: .6rem; }
+  .thankyou-banner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    color: var(--espresso);
+    margin-bottom: .5rem;
+  }
+  .thankyou-banner p { color: var(--brown); font-size: 1rem; line-height: 1.6; max-width: 520px; margin: 0 auto .8rem; }
+  .thankyou-banner .venmo-note {
+    display: inline-block;
+    background: var(--espresso);
+    color: white;
+    font-weight: 600;
+    font-size: .9rem;
+    padding: .5rem 1.2rem;
+    border-radius: 8px;
+    margin-top: .4rem;
+  }
+
+  /* ── SECTIONS ── */
+  .section { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem; }
+  .section-eyebrow {
+    font-size: .72rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: .5rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    color: var(--espresso);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--caramel); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ── ABOUT ── */
+  .about-body { color: var(--brown); line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem; }
+  .about-stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .about-stat {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--caramel);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .about-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--espresso); font-weight: 600; }
+  .about-stat-label { font-size: .82rem; color: var(--brown); margin-top: .25rem; line-height: 1.4; }
+  .about-quote {
+    background: var(--warm);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--espresso);
+    line-height: 1.6;
+  }
+  .about-links { display: flex; flex-wrap: wrap; gap: .6rem; }
+  .about-link {
+    display: inline-block;
+    background: white;
+    border: 1.5px solid var(--border);
+    color: var(--caramel);
+    font-size: .85rem;
+    font-weight: 600;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color .2s, background .2s;
+  }
+  .about-link:hover { border-color: var(--caramel); background: var(--warm); }
+
+  /* ── AWARD CARD ── */
+  .award-card {
+    background: linear-gradient(135deg, #fdf3e3, white);
+    border: 1.5px solid #f0d08a;
+    border-left: 4px solid var(--gold);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .award-card .award-icon { font-size: 2rem; flex-shrink: 0; }
+  .award-card .award-title { font-weight: 700; color: var(--espresso); font-size: .95rem; margin-bottom: .2rem; }
+  .award-card .award-body { font-size: .85rem; color: var(--brown); line-height: 1.5; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--espresso);
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: .82rem;
+  }
+  footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+  footer a:hover { color: white; }
 </style>
 </head>
 <body>
 
 <!-- ── HERO ── -->
-<section class="hero">
-  <div class="hero-rings"></div>
-  <div class="hero-tag fade-up">☕ Celebrity Barista Event</div>
-  <h1 class="hero-logo fade-up">Kenzie's<br><em>Be Cafe</em></h1>
-  <p class="hero-sub fade-up">A fundraiser with MillerKnoll</p>
-  <div class="hero-divider fade-up"></div>
-  <div class="event-details fade-up">
-    <div class="event-pill"><span class="event-pill-icon">📅</span><span class="event-pill-text">Tuesday, April 14th, 2026</span></div>
-    <div class="event-pill"><span class="event-pill-icon">📍</span><span class="event-pill-text">MillerKnoll Main Site · Front Lobby</span></div>
-    <div class="event-pill"><span class="event-pill-icon">☕</span><span class="event-pill-text">16oz Drinks + Donations</span></div>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Celebrity Barista Fundraiser</div>
+    <h1>Kenzie's <em>Be Cafe</em></h1>
+    <p class="hero-sub">Thank you for supporting our April 16th event — your generosity makes a real difference for Kenzie's and the people they employ.</p>
+    <div class="hero-meta">
+      <span>☕ April 16, 2025 · 8–10am</span>
+      <span>📍 Main Site · Front Lobby</span>
+      <span>💚 Grand Haven, MI</span>
+    </div>
   </div>
-  <button class="hero-cta fade-up" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Pre-Order Your Drink</button>
-  <p class="hero-mission fade-up">All proceeds support Kenzie's Be Cafe — a non-profit providing meaningful employment and workforce development for adults with intellectual and developmental disabilities in Grand Haven, Michigan.</p>
-</section>
+</header>
 
-<!-- ── MISSION ── -->
-<div class="mission-band">
-  <p>"At Kenzie's, our <strong>BEristas</strong> are at the heart of what we do — creating a warm and welcoming space for everyone who walks through our doors."</p>
+<!-- ── THANK YOU BANNER ── -->
+<div class="thankyou-banner">
+  <div class="ty-icon">🎉</div>
+  <h2>Orders Are Closed — Thank You!</h2>
+  <p>The event has wrapped and the espresso machine has been cleaned! Thanks to everyone who pre-ordered and donated. Every cup counts.</p>
+  <p>Still want to support the mission? Venmo directly:</p>
+  <span class="venmo-note">💚 @Kenziesbecafe-1</span>
 </div>
 
-<!-- ── ORDER FORM ── -->
-<section class="section" id="order">
-  <div class="section-eyebrow">Pre-Order</div>
-  <h2 class="section-title">Order Your <em>Drink</em></h2>
+<hr class="divider">
 
-  <div class="order-wrap">
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="section-eyebrow">About the Cause</div>
+  <h2 class="section-title">More Than a <em>Cup of Coffee</em></h2>
+  <p class="about-body">Kenzie's Be Cafe is a nonprofit coffee shop in Grand Haven, Michigan on a mission to create meaningful employment for adults with intellectual and developmental disabilities — the BEristas. Every drink you order supports real jobs, real skills, and real belonging in our community.</p>
 
-    <!-- HOT DRINKS -->
-    <div class="order-section">
-      <div class="order-section-title">☕ Hot Drinks</div>
-      <div class="order-section-sub">16oz · select all that apply</div>
-      <div class="menu-grid" id="hot-menu"></div>
+  <div class="about-stats">
+    <div class="about-stat" style="border-left-color:var(--gold); background:linear-gradient(135deg,#fdf3e3,white);">
+      <div class="about-stat-num" style="font-size:1.4rem;">🏆 #1</div>
+      <div class="about-stat-label"><strong>Best Barista in the Tri-Cities</strong> — BErista Ben was named Grand Haven Tribune's People's Choice Best Barista. You're in good hands.</div>
     </div>
-
-    <div class="order-divider"></div>
-
-    <!-- ICED DRINKS -->
-    <div class="order-section" style="padding-top:24px;">
-      <div class="order-section-title">🧊 Iced Drinks</div>
-      <div class="order-section-sub">16oz · select all that apply</div>
-      <div class="menu-grid" id="iced-menu"></div>
+    <div class="about-stat">
+      <div class="about-stat-num">100%</div>
+      <div class="about-stat-label">of proceeds support BErista employment and the Kenzie's Be Cafe mission</div>
     </div>
-
-    <div class="order-divider"></div>
-
-    <!-- MILK -->
-    <div class="milk-section" style="padding-top:24px;">
-      <div class="order-section-title" style="font-size:18px;margin-bottom:4px;">🥛 Alternative Milk</div>
-      <div class="order-section-sub">+$1.25 · optional</div>
-      <div class="milk-options">
-        <button class="milk-btn" onclick="selectMilk(this,'None')">Regular</button>
-        <button class="milk-btn" onclick="selectMilk(this,'Almond')">Almond</button>
-        <button class="milk-btn" onclick="selectMilk(this,'Oat')">Oat</button>
-        <button class="milk-btn" onclick="selectMilk(this,'Coconut')">Coconut</button>
-      </div>
+    <div class="about-stat">
+      <div class="about-stat-num">❤️</div>
+      <div class="about-stat-label">A community gathering place in Grand Haven since opening day</div>
     </div>
+  </div>
 
-    <div class="order-divider"></div>
+  <div class="about-quote">
+    "We believe that everyone deserves the opportunity to work, grow, and be celebrated for what they bring to the world."
+  </div>
 
-    <!-- DONATION -->
-    <div class="donate-section">
-      <div class="order-section-title" style="font-size:18px;margin-bottom:4px;">🤍 Add a Donation</div>
-      <div class="order-section-sub">100% goes to Kenzie's Be Cafe</div>
-      <div class="donate-grid">
-        <button class="donate-btn" onclick="selectDonate(this,5)">$5</button>
-        <button class="donate-btn" onclick="selectDonate(this,10)">$10</button>
-        <button class="donate-btn" onclick="selectDonate(this,25)">$25</button>
-        <button class="donate-btn" onclick="selectDonate(this,50)">$50</button>
-      </div>
-      <div class="donate-custom">
-        <span class="donate-custom-label">Custom amount: $</span>
-        <input type="number" id="custom-donate" placeholder="0.00" min="0" step="0.01" oninput="customDonate(this)">
-      </div>
-    </div>
-
-    <div class="order-divider"></div>
-
-    <!-- CONTACT -->
-    <div class="contact-section" style="padding-top:24px;">
-      <div class="order-section-title" style="font-size:18px;margin-bottom:16px;">👤 Your Info</div>
-      <div class="field-row">
-        <div class="field">
-          <label>First Name</label>
-          <input type="text" id="f-first" placeholder="First name">
-        </div>
-        <div class="field">
-          <label>Last Name</label>
-          <input type="text" id="f-last" placeholder="Last name">
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label>Email</label>
-          <input type="email" id="f-email" placeholder="you@millerknoll.com">
-        </div>
-        <div class="field">
-          <label>Department / Team</label>
-          <input type="text" id="f-dept" placeholder="e.g. Design, Finance...">
-        </div>
-      </div>
-      <div class="field" style="margin-top:4px;">
-        <label>Special Instructions</label>
-        <input type="text" id="f-notes" placeholder="Extra shot, light ice, etc.">
-      </div>
-    </div>
-
-    <div class="order-divider"></div>
-
-    <!-- SUMMARY -->
-    <div class="summary-bar" style="margin-top:20px;">
-      <div class="summary-title">Order Summary</div>
-      <div class="summary-items" id="summary-items"><span style="color:rgba(92,61,30,0.3);font-style:italic;font-size:13px;">Nothing selected yet</span></div>
-      <div class="summary-total">
-        <span class="summary-total-label">Total due at event</span>
-        <span class="summary-total-amount" id="summary-total">$0.00</span>
-      </div>
-    </div>
-
-    <!-- SUBMIT -->
-    <div class="submit-wrap">
-      <button class="submit-btn" id="submit-btn" onclick="submitOrder()">☕ &nbsp;Place Pre-Order</button>
-      <div class="payment-note">Payment at the event · <strong>Cash or Venmo @Kenziesbecafe-1</strong></div>
-    </div>
-
-    <!-- SUCCESS -->
-    <div class="success-screen" id="success-screen">
-      <span class="success-icon">☕</span>
-      <div class="success-title">Order placed!</div>
-      <div class="success-sub">We'll have your drink ready on April 14th.<br>Payment is due at the event — find us in the Front Lobby!</div>
-      <div class="venmo-box">
-        <div class="venmo-handle">@Kenziesbecafe-1</div>
-        <div class="venmo-label">Venmo · Cash at event</div>
-      </div>
-    </div>
-
+  <div class="about-links">
+    <a class="about-link" href="https://www.kenziesbecafe.org/" target="_blank">Visit Kenzie's ↗</a>
+    <a class="about-link" href="https://www.kenziesbecafe.org/our-mission" target="_blank">Read their mission ↗</a>
+    <a class="about-link" href="https://www.kenziesbecafe.org/meet-the-beristas" target="_blank">Meet the BEristas ↗</a>
+    <a class="about-link" href="https://www.kenziesbecafe.org/donate" target="_blank">Donate directly ↗</a>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
-<footer class="site-footer">
-  ☕ &nbsp;Kenzie's Be Cafe × MillerKnoll &nbsp;·&nbsp; April 14, 2026 &nbsp;·&nbsp;
-  <a href="https://www.kenziesbecafe.org" target="_blank">kenziesbecafe.org</a>
+<hr class="divider">
+
+<footer>
+  <p>Kenzie's Be Cafe Celebrity Barista Fundraiser · April 16, 2025 · Grand Haven, MI</p>
+  <p style="margin-top:.4rem;"><a href="https://www.kenziesbecafe.org/" target="_blank">kenziesbecafe.org</a></p>
 </footer>
 
-<script>
-const SCRIPT_URL = ""; // ← paste Apps Script URL here after setup
-
-const HOT = [
-  {name:"Hot Chocolate",price:4.50},
-  {name:"Americano",price:2.75},
-  {name:"Chai",price:5.00},
-  {name:"Dirty Chai",price:5.50},
-  {name:"Latte",price:4.50},
-  {name:"Mocha Latte",price:5.25},
-  {name:"Caramel Latte",price:5.25},
-  {name:"Vanilla Latte",price:5.25},
-  {name:"Sugar Free Vanilla Latte",price:5.25},
-  {name:"Butter Pecan Latte",price:5.25},
-];
-const ICED = [
-  {name:"Iced Americano",price:2.75},
-  {name:"Iced Chai",price:5.00},
-  {name:"Iced Dirty Chai",price:5.50},
-  {name:"Iced Latte",price:4.50},
-  {name:"Iced Mocha",price:5.25},
-  {name:"Iced Caramel Latte",price:5.25},
-  {name:"Iced Vanilla Latte",price:5.25},
-  {name:"Iced Sugar Free Vanilla Latte",price:5.25},
-  {name:"Iced Butter Pecan Latte",price:5.25},
-];
-
-let cart = {}; // key: item name, value: qty
-let selectedMilk = 'None';
-let donationAmount = 0;
-
-function buildMenu(items, containerId) {
-  const el = document.getElementById(containerId);
-  items.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'menu-item';
-    div.id = 'item-' + item.name.replace(/\s+/g,'-');
-    div.innerHTML = `
-      <div class="menu-item-left" onclick="toggleItem('${item.name}',${item.price})">
-        <div class="menu-check" id="check-${item.name.replace(/\s+/g,'-')}">✓</div>
-        <span class="menu-name">${item.name}</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;">
-        <span class="menu-price">$${item.price.toFixed(2)}</span>
-        <div class="menu-qty">
-          <button class="qty-btn" onclick="changeQty('${item.name}',${item.price},-1)">−</button>
-          <span class="qty-val" id="qty-${item.name.replace(/\s+/g,'-')}">1</span>
-          <button class="qty-btn" onclick="changeQty('${item.name}',${item.price},1)">+</button>
-        </div>
-      </div>`;
-    el.appendChild(div);
-  });
-}
-
-function toggleItem(name, price) {
-  const id = name.replace(/\s+/g,'-');
-  const el = document.getElementById('item-' + id);
-  if (cart[name]) {
-    delete cart[name];
-    el.classList.remove('selected');
-  } else {
-    cart[name] = {qty:1, price};
-    el.classList.add('selected');
-  }
-  document.getElementById('qty-' + id).textContent = cart[name]?.qty || 1;
-  updateSummary();
-}
-
-function changeQty(name, price, delta) {
-  if (!cart[name]) return;
-  cart[name].qty = Math.max(1, cart[name].qty + delta);
-  document.getElementById('qty-' + name.replace(/\s+/g,'-')).textContent = cart[name].qty;
-  updateSummary();
-}
-
-function selectMilk(btn, milk) {
-  document.querySelectorAll('.milk-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  selectedMilk = milk;
-  updateSummary();
-}
-
-function selectDonate(btn, amount) {
-  document.querySelectorAll('.donate-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  document.getElementById('custom-donate').value = '';
-  donationAmount = amount;
-  updateSummary();
-}
-
-function customDonate(input) {
-  document.querySelectorAll('.donate-btn').forEach(b => b.classList.remove('selected'));
-  donationAmount = parseFloat(input.value) || 0;
-  updateSummary();
-}
-
-function updateSummary() {
-  const items = document.getElementById('summary-items');
-  const totalEl = document.getElementById('summary-total');
-  let lines = [];
-  let total = 0;
-
-  Object.entries(cart).forEach(([name, {qty, price}]) => {
-    const lineTotal = qty * price;
-    total += lineTotal;
-    lines.push(`${qty}× ${name} — $${lineTotal.toFixed(2)}`);
-  });
-
-  if (selectedMilk !== 'None' && Object.keys(cart).length > 0) {
-    total += 1.25;
-    lines.push(`Alt Milk (${selectedMilk}) — $1.25`);
-  }
-
-  if (donationAmount > 0) {
-    total += donationAmount;
-    lines.push(`Donation — $${donationAmount.toFixed(2)}`);
-  }
-
-  if (lines.length === 0) {
-    items.innerHTML = '<span style="color:rgba(92,61,30,0.3);font-style:italic;font-size:13px;">Nothing selected yet</span>';
-  } else {
-    items.innerHTML = lines.map(l => `<div>${l}</div>`).join('');
-  }
-  totalEl.textContent = '$' + total.toFixed(2);
-}
-
-async function submitOrder() {
-  const first = document.getElementById('f-first').value.trim();
-  const last  = document.getElementById('f-last').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  const dept  = document.getElementById('f-dept').value.trim();
-  const notes = document.getElementById('f-notes').value.trim();
-
-  if (!first || !last) { alert('Please enter your name.'); return; }
-  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
-  if (Object.keys(cart).length === 0 && donationAmount === 0) { alert('Please select a drink or add a donation.'); return; }
-
-  const btn = document.getElementById('submit-btn');
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
-
-  const orderLines = Object.entries(cart).map(([name,{qty,price}]) => `${qty}x ${name} ($${(qty*price).toFixed(2)})`).join(', ');
-  const milkLine   = selectedMilk !== 'None' ? selectedMilk + ' (+$1.25)' : 'Regular';
-  let total = Object.values(cart).reduce((s,{qty,price})=>s+qty*price,0);
-  if (selectedMilk !== 'None' && Object.keys(cart).length > 0) total += 1.25;
-  if (donationAmount > 0) total += donationAmount;
-
-  if (SCRIPT_URL) {
-    try {
-      const url = `${SCRIPT_URL}?action=order&name=${encodeURIComponent(first+' '+last)}&email=${encodeURIComponent(email)}&dept=${encodeURIComponent(dept)}&drinks=${encodeURIComponent(orderLines)}&milk=${encodeURIComponent(milkLine)}&donation=${donationAmount.toFixed(2)}&total=${total.toFixed(2)}&notes=${encodeURIComponent(notes)}`;
-      await fetch(url, {method:'GET', mode:'no-cors'});
-    } catch(e) { console.log('Script error', e); }
-  }
-
-  document.querySelector('.order-wrap').querySelector('.order-section').style.display='none';
-  document.querySelectorAll('.order-section, .order-divider, .milk-section, .donate-section, .contact-section, .summary-bar, .submit-wrap').forEach(el => el.style.display='none');
-  document.getElementById('success-screen').style.display='block';
-}
-
-// Init menus
-buildMenu(HOT, 'hot-menu');
-buildMenu(ICED, 'iced-menu');
-</script>
 </body>
 </html>
